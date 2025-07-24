@@ -1,25 +1,30 @@
-
+# Node.js
 node_modules/
 
 
+# Build
 build/
 
 
+# Environment
 .env
 .env.local
 .env.*.local
 
 
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
 
+# OS
 .DS_Store
 Thumbs.db
 
 
+# IDE
 .vscode/
 .idea/
 *.suo
@@ -27,17 +32,18 @@ Thumbs.db
 *.njsproj
 *.sln
 
-
+# Coverage
 coverage/
 
 
+# Package Managers
 .npm/
 .pnp/
 .pnp.js
 
 
+# Build
 *.tsbuildinfo
 
-
+# Logs
 *.log
-
