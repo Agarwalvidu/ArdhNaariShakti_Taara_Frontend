@@ -50,3 +50,14 @@
   color: #000;
   font-weight: 500;
 }
+.link {
+  color: #3498db;
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.text-center {
+  text-align: center;
+  margin-top: 10px;
+}
