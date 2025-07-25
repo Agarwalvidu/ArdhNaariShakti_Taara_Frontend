@@ -31,4 +31,14 @@
     background: #474a7c;
     cursor: not-allowed;
   }
-  
+  .link {
+    color: #3498db;
+    text-decoration: none;
+  }
+  .link:hover {
+    text-decoration: underline;
+  }
+  .text-center {
+    text-align: center;
+    margin-top: 10px;
+  }
