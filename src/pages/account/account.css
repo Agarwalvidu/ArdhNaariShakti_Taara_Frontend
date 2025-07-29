@@ -1,21 +1,25 @@
 .accountInfo {
   margin: 80px 0;
 }
+
 .accountInfo .container {
   padding: 50px;
   max-width: 60%;
   margin: auto;
 }
+
 .accountInfo .content {
   margin-top: 80px;
   display: flex;
   justify-content: flex-start;
   position: relative;
 }
+
 .accountInfo .left {
   width: 150px;
   position: relative;
 }
+
 .accountInfo .right {
   width: calc(100% - 180px);
   margin-left: 50px;
@@ -28,6 +32,7 @@
   z-index: 2;
   opacity: 0;
 }
+
 .accountInfo .icon,
 .accountInfo .img img {
   position: absolute;
@@ -39,14 +44,30 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
 .accountInfo .right label {
   font-size: 17px;
   color: #000;
   margin-bottom: 10px;
   display: block;
 }
+
 .profile h4 {
   text-transform: capitalize;
   color: #000;
   font-weight: 500;
+}
+
+.link {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.text-center {
+  text-align: center;
+  margin-top: 10px;
 }

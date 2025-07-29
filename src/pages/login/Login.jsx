@@ -1,71 +1,86 @@
-import React, { useContext, useRef } from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 import back from "../../assets/images/my-account.jpg";
-import { Link } from "react-router-dom";
-import { Context } from "../../context/Context";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-export const Login = () => {
-  const userRef = useRef();
-  const passRef = useRef();
-  const { dispatch, FetchData } = useContext(Context);
+const Login = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGINSTART" });
+    setError(false);
     try {
       const res = await axios.post(
         "https://taara-backend.onrender.com/auth/login",
-        {
-          username: userRef.current.value,
-          password: passRef.current.value,
-        }
+        formData
       );
-      dispatch({ type: "LOGINSUCC", payload: res.data });
-
-      // Show toast and redirect 
-      toast.success("Login successful!", {
-        position: "top-center",
-        autoClose: 2000,
-      });
-      setTimeout(() => {
-        window.location.replace("/");
-      }, 2000);
-    } catch (error) {
-      dispatch({ type: "LOGINFAILED" });
+      if (res.data) {
+        // Optional: Store token or user info
+        navigate("/");
+      }
+    } catch (err) {
+      setError(true);
     }
   };
 
   return (
-    <>
-      <section className="login">
-        <div className="container">
-          <div className="backImg">
-            <img src={back} alt="" />
-            <div className="text">
-              <h3>Login</h3>
-              <h1>My account</h1>
-            </div>
+    <section className="login">
+      <div className="container">
+        <div className="backImg">
+          <img src={back} alt="Login Background" />
+          <div className="text">
+            <h3>Login</h3>
+            <h1>My account</h1>
           </div>
-
-          <form onSubmit={handleSubmit}>
-            <span>Username*</span>
-            <input type="text" required ref={userRef} />
-            <span>Password *</span>
-            <input type="password" required ref={passRef} />
-            <button className="button" type="submit" disabled={FetchData}>
-              Log in
-            </button>
-
-            <Link to="/register" className="link">
-              Register
-            </Link>
-          </form>
         </div>
-        <ToastContainer />
-      </section>
-    </>
+
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email address *</label>
+          <input
+            id="email"
+            type="email"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            autoComplete="email"
+          />
+
+          <label htmlFor="password">Password *</label>
+          <input
+            id="password"
+            type="password"
+            required
+            value={formData.password}
+            onChange={handleChange}
+            autoComplete="current-password"
+          />
+
+          <button type="submit" className="button">
+            Login
+          </button>
+
+          <p className="text-center" style={{ marginTop: "10px" }}>
+            Don't have an account?{" "}
+            <Link to="/register" className="link">
+              Create Account
+            </Link>
+          </p>
+
+          {error && <span style={{ color: "red" }}>Invalid email or password</span>}
+        </form>
+      </div>
+    </section>
   );
 };
+
+export default Login;
