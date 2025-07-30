@@ -36,7 +36,7 @@ export const Card = ({ posts }) => {
                 <Link to={`/post/${item._id}`}>
                   <h3>{item.title}</h3>
                 </Link>
-                <p>{item.desc.slice(0, 150)}...</p>
+                <p>{(item.desc && item.desc.length > 0) ? item.desc.slice(0, 150) + '...' : 'No description available'}</p>
                 <div className="date">
                   <div>
                     <AiOutlineClockCircle className="icon" />
