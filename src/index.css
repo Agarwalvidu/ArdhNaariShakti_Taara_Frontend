@@ -1,4 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Passions+Conflict&display=swap");
+
+/* Theme Variables */
+:root {
+  /* Light theme */
+  --bg-primary: #f9f9f9;
+  --bg-secondary: #fff;
+  --text-primary: #000;
+  --text-secondary: #5a5a5a;
+  --text-muted: #999;
+  --border-color: #e6e6e6;
+  --header-bg: #ffa9cb;
+  --shadow-color: rgb(0 0 0 / 8%);
+  --shadow-color-strong: rgb(115 115 115 / 20%);
+  --input-border: #212121;
+  --button-bg: #212121;
+  --button-text: #fff;
+}
+
+[data-theme="dark"] {
+  /* Dark theme */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #808080;
+  --border-color: #404040;
+  --header-bg: #000000;
+  --shadow-color: rgb(255 255 255 / 8%);
+  --shadow-color-strong: rgb(255 255 255 / 20%);
+  --input-border: #dddddd;
+  --button-bg: #dddddd;
+  --button-text: #000;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -6,8 +40,9 @@
 }
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #f9f9f9;
-  color: #000;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 h1,
 h2 {
@@ -43,20 +78,21 @@ textarea {
   align-items: center;
 }
 p {
-  color: #5a5a5a;
+  color: var(--text-secondary);
   font-size: 15px;
 }
 label {
-  color: #999;
+  color: var(--text-muted);
   font-size: 13px;
 }
 select,
 form,
 .boxItems {
-  border: 1px solid #e6e6e6;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 20px;
-  background: #fff;
+  background: var(--bg-secondary);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 form {
   display: flex;
@@ -73,28 +109,30 @@ form textarea,
 .accountInfo .right input,
 form select,
 form input {
-  border: 1px solid #212121;
+  border: 1px solid var(--input-border);
   border-radius: 6px;
-  color: #212121;
+  color: var(--text-primary);
   font-size: 15px;
   min-height: 44px;
   padding: 0 20px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.3s ease, color 0.3s ease;
   width: 100%;
   margin-bottom: 30px;
+  background: var(--bg-secondary);
 }
 
 .button {
-  background: #212121;
+  background: var(--button-bg);
   border: 1px solid;
-  border-color: #212121;
+  border-color: var(--button-bg);
   border-radius: 6px;
-  color: #fff;
+  color: var(--button-text);
   cursor: pointer;
   font-weight: 400;
   height: 48px;
   line-height: 1;
   padding: 15px 28px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .grid {
   display: grid;
@@ -118,10 +156,14 @@ form input {
 footer {
   margin-top: 50px;
   padding: 10px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 footer .icon {
   font-size: 20px;
   margin-left: 10px;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
 }
 .link {
   margin-top: 20px;
