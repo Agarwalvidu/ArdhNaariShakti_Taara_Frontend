@@ -7,17 +7,17 @@ header {
 }
 /* nav */
 
-nav ul {
+.navLinks ul {
   display: flex;
 }
-nav a {
+.navLinks a {
   text-transform: capitalize;
   margin-right: 30px;
   color: #000;
 }
 /* User */
 .profile {
-  margin-left: 30px;
+  margin: auto 10px;
   cursor: pointer;
 }
 .profile .image {
@@ -72,13 +72,87 @@ header.active {
   width: 100%;
   box-shadow: 0 0 4px 0 rgb(115 115 115 / 20%);
   z-index: 9999;
-  background: #fff;
+  background: #ffa9cb;
 }
+
+/* Account section */
+.account {
+  margin-left: 30px;
+}
+
+.mobileMenuBtn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 23px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobileMenuBtn .bar {
+  height: 3px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  transition: 0.3s;
+}
+
+
+.mobileMenu{
+  display: none;
+}
+
+/* Responsive styles */
 @media screen and (max-width: 768px) {
-  header .search {
+  .navLinks, .desktopAccount {
     display: none;
   }
-  nav {
+
+  .mobileMenuBtn {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+  }
+
+  .mobileMenu {
     display: none;
+    flex-direction: column;
+    background: #ffa9cb;
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 1rem;
+    z-index: 999;
+  }
+
+  .mobileMenu.open {
+    display: flex;
+  }
+
+  .mobileMenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobileMenu li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .mobileMenu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+
+  .mobileAccount {
+    margin-top: 1rem;
+    margin-left: 0px;
+    display: flex;
+    justify-content: center;
   }
 }
