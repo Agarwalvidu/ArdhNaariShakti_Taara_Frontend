@@ -1,19 +1,194 @@
 header {
-  background: #ffa9cb ;
+  background: var(--header-bg);
   padding: 20px;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+  box-shadow: 0 2px 4px var(--shadow-color);
   position: relative;
   z-index: 44;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 /* nav */
 
 nav ul {
   display: flex;
+  gap: 15px;
+  align-items: center;
 }
 nav a {
   text-transform: capitalize;
   margin-right: 30px;
-  color: #000;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.nav-link {
+  color: white !important;
+  font-weight: bold;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  color: #ffa9cb !important;
+  font-size: 1.05em;
+  transform: translateY(-2px);
+}
+
+/* Light mode navigation */
+header .nav-link {
+  color: white !important;
+}
+
+/* Dark mode navigation with advanced neon lighting effects */
+[data-theme="dark"] nav ul {
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(20, 20, 20, 0.8) 50%,
+    rgba(0, 0, 0, 0.9) 100%);
+  padding: 15px 25px;
+  border-radius: 25px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Animated border for nav container */
+[data-theme="dark"] nav ul::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b, #ff006e);
+  background-size: 300% 300%;
+  border-radius: 25px;
+  z-index: -1;
+  animation: neonBorderRotate 4s linear infinite;
+}
+
+/* Glowing orbs background effect */
+[data-theme="dark"] nav ul::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(131, 56, 236, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(58, 134, 255, 0.08) 0%, transparent 50%);
+  border-radius: 25px;
+  animation: orbFloat 6s ease-in-out infinite;
+}
+
+/* Individual nav link styling */
+[data-theme="dark"] .nav-link {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Laser sweep effect */
+[data-theme="dark"] .nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 169, 203, 0.4),
+    transparent);
+  transition: left 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Particle effect overlay */
+[data-theme="dark"] .nav-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="spark" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.8);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:0" /></radialGradient></defs><circle cx="20" cy="20" r="1" fill="url(%23spark)" opacity="0.8"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/></circle><circle cx="80" cy="30" r="0.8" fill="url(%23spark)" opacity="0.6"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="60" cy="70" r="1.2" fill="url(%23spark)" opacity="0.7"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.5s" repeatCount="indefinite"/></circle></svg>') repeat;
+  background-size: 50px 50px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Hover effects */
+[data-theme="dark"] .nav-link:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 169, 203, 0.3) 0%,
+    rgba(255, 169, 203, 0.1) 100%);
+  border-color: rgba(255, 169, 203, 0.6);
+  color: #ffffff !important;
+  box-shadow: 
+    0 0 25px rgba(255, 169, 203, 0.4),
+    0 0 50px rgba(255, 169, 203, 0.2),
+    0 8px 25px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-shadow: 
+    0 0 10px rgba(255, 169, 203, 0.8),
+    0 0 20px rgba(255, 169, 203, 0.4);
+  transform: translateY(-4px) scale(1.05);
+}
+
+[data-theme="dark"] .nav-link:hover::before {
+  left: 100%;
+}
+
+[data-theme="dark"] .nav-link:hover::after {
+  opacity: 0.6;
+}
+
+/* Active/current page indicator */
+[data-theme="dark"] .nav-link.active {
+  background: linear-gradient(135deg, 
+    rgba(255, 169, 203, 0.4) 0%,
+    rgba(255, 169, 203, 0.2) 100%);
+  border-color: rgba(255, 169, 203, 0.8);
+  animation: activeGlow 3s ease-in-out infinite;
+}
+
+/* Active header styles for dark mode */
+[data-theme="dark"] header.active {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%) !important;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] header.active nav ul {
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(25, 25, 25, 0.9) 50%,
+    rgba(0, 0, 0, 0.95) 100%);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 /* User */
 .profile {
@@ -30,6 +205,8 @@ nav a {
 .profile button {
   font-size: 17px;
   font-weight: 500;
+  color: white;
+  transition: color 0.3s ease;
 }
 .profile img {
   width: 40px;
@@ -37,14 +214,24 @@ nav a {
   border-radius: 50%;
   object-fit: cover;
 }
+
+/* Dark mode profile styling */
+[data-theme="dark"] .profile button {
+  color: #ffffff;
+}
+
+[data-theme="dark"] header.active .profile button {
+  color: var(--text-primary);
+}
 .openProfile {
-  color: #000;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+  color: var(--text-primary);
+  box-shadow: 0 2px 4px var(--shadow-color);
   position: absolute;
   top: 80px;
   right: 10px;
   width: 250px;
-  background: #fff;
+  background: var(--bg-secondary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .openProfile .box {
   display: flex;
@@ -70,9 +257,103 @@ header.active {
   top: 0;
   left: 0;
   width: 100%;
-  box-shadow: 0 0 4px 0 rgb(115 115 115 / 20%);
+  box-shadow: 0 0 4px 0 var(--shadow-color-strong);
   z-index: 9999;
-  background: #fff;
+  background: var(--bg-secondary);
+  transition: background-color 0.3s ease;
+}
+
+/* Theme Toggle Button - Cyber Enhancement */
+.theme-toggle {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.6));
+  border: 2px solid transparent;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background-clip: padding-box;
+}
+
+/* Animated border for theme toggle */
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5);
+  background-size: 300% 300%;
+  border-radius: 50%;
+  z-index: -1;
+  animation: neonBorderRotate 3s linear infinite;
+  opacity: 0.8;
+}
+
+/* Inner glow effect */
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.15) rotate(180deg);
+  background: linear-gradient(135deg, rgba(255, 169, 203, 0.3), rgba(255, 169, 203, 0.1));
+  box-shadow: 
+    0 0 25px rgba(255, 169, 203, 0.5),
+    0 0 50px rgba(255, 169, 203, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle:hover::after {
+  opacity: 1;
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  z-index: 2;
+  position: relative;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+  filter: drop-shadow(0 0 10px rgba(255, 169, 203, 0.8));
+  transform: scale(1.1);
+}
+
+/* Dark mode theme toggle styling with enhanced cyber effects */
+[data-theme="dark"] .theme-toggle {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(30, 30, 30, 0.7));
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: linear-gradient(135deg, rgba(255, 169, 203, 0.4), rgba(255, 169, 203, 0.2));
+  box-shadow: 
+    0 0 30px rgba(255, 169, 203, 0.6),
+    0 0 60px rgba(255, 169, 203, 0.4),
+    0 5px 20px rgba(0, 0, 0, 0.4),
+    inset 0 0 25px rgba(255, 255, 255, 0.15);
 }
 @media screen and (max-width: 768px) {
   header .search {
@@ -81,4 +362,166 @@ header.active {
   nav {
     display: none;
   }
+  .theme-toggle {
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+  }
+  .theme-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Advanced Lighting Animations */
+@keyframes neonBorderRotate {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  25% {
+    filter: hue-rotate(90deg) brightness(1.2);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(180deg) brightness(1);
+  }
+  75% {
+    filter: hue-rotate(270deg) brightness(1.2);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(360deg) brightness(1);
+  }
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-5px) rotate(90deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateY(-5px) rotate(270deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes activeGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 25px rgba(255, 169, 203, 0.4),
+      0 0 50px rgba(255, 169, 203, 0.2),
+      0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 35px rgba(255, 169, 203, 0.6),
+      0 0 70px rgba(255, 169, 203, 0.3),
+      0 12px 35px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@keyframes laserScan {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes hologramFlicker {
+  0%, 100% { opacity: 1; }
+  5% { opacity: 0.9; }
+  10% { opacity: 1; }
+  15% { opacity: 0.95; }
+  20% { opacity: 1; }
+  25% { opacity: 0.98; }
+}
+
+/* Matrix-style digital rain effect for nav container */
+[data-theme="dark"] nav ul {
+  position: relative;
+}
+
+[data-theme="dark"] nav ul::before {
+  animation: neonBorderRotate 4s linear infinite, hologramFlicker 3s ease-in-out infinite;
+}
+
+/* Cyber-punk glow enhancement */
+[data-theme="dark"] .nav-link {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+}
+
+/* Enhanced hover with cyber effect */
+[data-theme="dark"] .nav-link:hover {
+  animation: hologramFlicker 0.5s ease-in-out;
+}
+
+/* Pulsing animation for enhanced visual effect */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 169, 203, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 169, 203, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 169, 203, 0.3);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced dark mode navbar with floating effect */
+[data-theme="dark"] nav {
+  position: relative;
+}
+
+/* Electrifying border effect */
+[data-theme="dark"] nav::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, 
+    #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b, #ff006e);
+  background-size: 400% 400%;
+  border-radius: 28px;
+  z-index: -1;
+  animation: neonBorderRotate 3s ease-in-out infinite;
+  opacity: 0.8;
+  filter: blur(2px);
+}
+
+/* Subtle glow effect for the entire navigation container */
+[data-theme="dark"] nav ul {
+  position: relative;
+  z-index: 1;
 }

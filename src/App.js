@@ -10,6 +10,7 @@ import { DetailsPages } from "./pages/details/DetailsPages"
 import { Account } from "./pages/account/Account"
 import { Create } from "./components/create/Create"
 import { Context } from "./context/Context"
+import { ThemeProvider } from "./context/ThemeContext"
 import { Jobs } from "./pages/jobs/jobs.jsx"
 import { Blogpage } from "./pages/blogpage/blogpage.jsx"
 import { Shelter } from "./pages/shelter/shelter.jsx"
@@ -18,7 +19,7 @@ const App = () => {
   //after login
   const { user } = useContext(Context)
   return (
-    <>
+    <ThemeProvider>
       <Router>
         <Header />
         <GoogleTagManager/>
@@ -35,7 +36,7 @@ const App = () => {
         </Routes>
         <Footer />
       </Router>
-    </>
+    </ThemeProvider>
   )
 }
 export default App
