@@ -24,12 +24,6 @@ export const Header = () => {
             </Link>
           </div>
 
-          <div className="mobileMenuBtn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
-          </div>
-
           <nav className="navLinks">
             <ul>
               {nav.map((link) => (
@@ -49,6 +43,13 @@ export const Header = () => {
             <User />
           </div>
 
+          <div className="mobileWrapper">     
+          <div className="mobileMenuBtn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+
           {/* Hamburger meny logic */}
           <div className={`mobileMenu ${isMenuOpen ? "open" : ""}`}>
             <ul>
@@ -62,10 +63,12 @@ export const Header = () => {
                 </li>
               ))}
             </ul>
+            <hr />
             <div className="account mobileAccount">
               <User />
             </div>
           </div>
+          </div> 
         </div>
       </header>
     </>

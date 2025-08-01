@@ -1,42 +1,50 @@
 header {
-  background: #ffa9cb ;
+  background: #ffa9cb;
   padding: 20px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
   position: relative;
   z-index: 44;
 }
+
 /* nav */
 
 .navLinks ul {
   display: flex;
 }
+
 .navLinks a {
   text-transform: capitalize;
   margin-right: 30px;
   color: #000;
 }
+
 /* User */
 .profile {
   margin: auto 10px;
   cursor: pointer;
 }
+
 .profile .image {
   display: flex;
   padding-bottom: 20px;
 }
+
 .profile .image img {
   margin-right: 20px;
 }
+
 .profile button {
   font-size: 17px;
   font-weight: 500;
 }
+
 .profile img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
+
 .openProfile {
   color: #000;
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
@@ -46,6 +54,7 @@ header {
   width: 250px;
   background: #fff;
 }
+
 .openProfile .box {
   display: flex;
   align-items: center;
@@ -54,17 +63,21 @@ header {
   padding: 5px;
   transition: 0.5s;
 }
+
 .openProfile .icon {
   font-size: 20px;
   margin-right: 20px;
 }
+
 .openProfile h4 {
   font-size: 15px;
   font-weight: 500;
 }
+
 .openProfile button:hover {
   background: rgba(147, 75, 255, 0.075);
 }
+
 header.active {
   position: sticky;
   top: 0;
@@ -99,13 +112,15 @@ header.active {
 }
 
 
-.mobileMenu{
+.mobileMenu {
   display: none;
 }
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {
-  .navLinks, .desktopAccount {
+
+  .navLinks,
+  .desktopAccount {
     display: none;
   }
 
@@ -117,19 +132,24 @@ header.active {
   }
 
   .mobileMenu {
-    display: none;
-    flex-direction: column;
-    background: #ffa9cb;
-    width: 100%;
     position: absolute;
-    top: 70px;
-    left: 0;
-    padding: 1rem;
-    z-index: 999;
+    top: 100%;
+    right: -300px;
+    /* start hidden off-screen */
+    width: 200px;
+    background-color: white;
+    transition: right 0.3s ease-in-out;
+    z-index: 100;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
   }
 
   .mobileMenu.open {
     display: flex;
+    flex-direction: column;
+    top: 80px;
+    right: 15px;
   }
 
   .mobileMenu ul {
@@ -144,7 +164,7 @@ header.active {
   }
 
   .mobileMenu a {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 1.1rem;
   }
