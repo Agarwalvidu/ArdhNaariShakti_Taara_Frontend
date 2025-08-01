@@ -1,29 +1,31 @@
-import React from 'react';
-import "./Donation.css"
+
+import "./Donation.css";
 
 export const FlipCard = () => {
   return (
-    <div className='donation-card'>
+    <div className="donation-wrapper">
       <div className="flip-card">
-      <div className="flip-card-inner">
-        <div className="flip-card-front">
-          <img src="/images/category/card_image.jpg" alt="Avatar" />
-        </div>
-        <div className="flip-card-back">
-          <h2>Please fill the feedback form.</h2>
-          <p style={{color: "white"}}>Your feedback is crucial for us to improve ourself.</p>
-          <p style={{color: "white"}}>Thank you!</p>
+        <div className="flip-card-inner">
+          <div className="flip-card-front">
+            <img src="/images/category/card_image.jpg" alt="Feedback Illustration" />
+          </div>
+          <div className="flip-card-back">
+            <h2>We Value Your Voice</h2>
+            <p>Your feedback helps us grow and serve better.</p>
+            <p>Let’s make a difference together!</p>
+          </div>
         </div>
       </div>
-    </div>  
-    <a href="https://forms.gle/NQakmZ8aQbkDFiD56">
-    <div className='donation-text'>
-        Please Provide Feedback
-        <div className='donation-text1'> 
-        Your feedback empowers the transgender community by fostering inclusivity and advocating for equal rights. It helps us offer vital services like healthcare, education, and legal assistance. Together, let's break down barriers and create a world where everyone thrives with dignity and respect. Thank you for being part of this journey towards positive change.        </div>
-        </div>
+
+      <div className="donation-text-block">
+        <h1>Share Your Feedback</h1>
+        <p className="donation-description">
+          Your thoughts matter. Help us improve and support the transgender community through your valuable suggestions. Together, we can make an impact in areas like healthcare, education, and legal rights.
+        </p>
+        <a href="https://forms.gle/NQakmZ8aQbkDFiD56" target="_blank" rel="noopener noreferrer">
+          <button className="feedback-btn">Submit Feedback</button>
         </a>
+      </div>
     </div>
   );
-}
-
+};

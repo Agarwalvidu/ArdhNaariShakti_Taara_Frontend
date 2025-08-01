@@ -69,12 +69,13 @@ export const Category = () => {
               <div className='boxs'>
                 <div className='box' key={item.id}>
                   <img src={item.cover} alt='cover' />
-                  <div className='overlay'>
-                    <Link to={`/?cat=${item.name}`} className='link'>
-                      <h4>{item.category}</h4>
-                    </Link>
-                    {/* <p>{item.title}</p> */}
-                  </div>
+                  {item.category !== "" && (
+                    <div className='overlay'>
+                      <Link to={`/?cat=${item.name}`} className='link'>
+                        <h4 className="card_category">{item.category}</h4>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

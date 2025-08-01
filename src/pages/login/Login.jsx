@@ -25,7 +25,6 @@ export const Login = () => {
       );
       dispatch({ type: "LOGINSUCC", payload: res.data });
 
-      // Show toast and redirect 
       toast.success("Login successful!", {
         position: "top-center",
         autoClose: 2000,
@@ -59,9 +58,12 @@ export const Login = () => {
               Log in
             </button>
 
-            <Link to="/register" className="link">
-              Register
-            </Link>
+            <p style={{ marginTop: "10px", textAlign: "center" }}>
+              Don't have an account?{" "}
+              <Link to="/register" className="link">
+                Create Account
+              </Link>
+            </p>        
           </form>
         </div>
         <ToastContainer />

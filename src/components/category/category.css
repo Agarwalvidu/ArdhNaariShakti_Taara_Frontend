@@ -38,9 +38,22 @@
   z-index: 2;
   color: #fff;
 }
-.category .overlay h4 {
-  font-weight: 500;
-  color: rgb(253, 246, 126);
+.category .overlay h4 
+{
+  font-weight: 700;
+  color: #ffffff; 
+  font-size: 20px;
+  padding: 10px 16px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 8px;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.3); 
+  backdrop-filter: blur(6px);
+  display: inline-block;
+  max-width: 90%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+  transition: all 0.3s ease-in-out;
 }
 .category .overlay p {
   color: #000000;
@@ -78,4 +91,6 @@
 .control-btn .icon {
   font-size: 25px;
 }
+
+
 /*---------------control-btn-------------*/

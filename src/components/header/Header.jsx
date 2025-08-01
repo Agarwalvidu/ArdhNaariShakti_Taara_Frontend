@@ -1,3 +1,4 @@
+import React, { useEffect } from "react"
 import logo from "../../assets/images/logo.png"
 import "./header.css"
 import { User } from "./User"
@@ -9,10 +10,17 @@ export const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  window.addEventListener("scroll", function () {
-    const header = this.document.querySelector(".header")
-    header.classList.toggle("active", this.window.scrollY > 100)
-  })
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector(".header")
+      if (header) {
+        header.classList.toggle("active", window.scrollY > 100)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
     <>
@@ -70,7 +78,7 @@ export const Header = () => {
           </div>
           </div> 
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   )
 }
