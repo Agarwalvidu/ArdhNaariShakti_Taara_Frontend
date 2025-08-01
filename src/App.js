@@ -13,6 +13,8 @@ import { Context } from "./context/Context"
 import { Jobs } from "./pages/jobs/jobs.jsx"
 import { Blogpage } from "./pages/blogpage/blogpage.jsx"
 import { Shelter } from "./pages/shelter/shelter.jsx"
+import CreateBlog from "./pages/blogpage/createblog.jsx"
+
 
 const App = () => {
   //after login
@@ -32,6 +34,7 @@ const App = () => {
           <Route path="/shelter" element={<Shelter/>} />
           <Route path="/account" element={<Account/>} />
           <Route path="/create" element={<Create/>} />
+          <Route path="createblog" element={<CreateBlog/>} />   {/*Adding route to form page */}
         </Routes>
         <Footer />
       </Router>
