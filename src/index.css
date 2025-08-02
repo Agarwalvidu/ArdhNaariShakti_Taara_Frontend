@@ -300,3 +300,45 @@ footer .icon {
     opacity: 0.7;
   }
 }
+
+body.dark {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+
+body.dark form,
+body.dark .boxItems,
+body.dark select {
+  background: #1e1e1e;
+  border-color: #444;
+  color: #fff;
+}
+
+body.dark p,
+body.dark label,
+body.dark h1,
+body.dark h2,
+body.dark h3 {
+  color: #fff;
+}
+
+body.dark .button {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+body.dark a {
+  color: #bb86fc;
+}
+
+body.dark header,
+body.dark footer {
+  background-color: #1f1f1f;
+}
+
+body.dark .button {
+  background: #bb86fc;
+  color: #000;
+  border-color: #bb86fc;
+}

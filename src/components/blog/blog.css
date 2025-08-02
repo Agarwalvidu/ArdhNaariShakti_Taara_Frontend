@@ -159,3 +159,23 @@
     flex-wrap: wrap;
     margin: 0;
     flex-direction: column-reverse; */
+/* 🔥 Dark & Light Mode Support */
+.blog .boxItems {
+  background: rgba(255, 255, 255, 0.9); /* Slight white background for light mode */
+  color: #000;
+}
+
+body.dark .blog .boxItems {
+  background: rgba(30, 30, 30, 0.9); /* Dark background for dark mode */
+  color: #fff;
+}
+
+body.dark .blog h3,
+body.dark .blog p,
+body.dark .blog label {
+  color: #fff !important;
+}
+
+body.dark .blog a {
+  color: #fff !important;
+}
