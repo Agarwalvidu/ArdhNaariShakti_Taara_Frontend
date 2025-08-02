@@ -115,3 +115,24 @@
     transform: translateY(0);
   }
 }
+/* 🌙 Dark Mode Styles for Job Cards */
+body.dark .card-wrapper {
+  background-color: #1e1e1e; /* Dark background */
+  color: #fff;
+}
+
+body.dark .card-wrapper h2,
+body.dark .card-wrapper h4,
+body.dark .card-wrapper p,
+body.dark .card-wrapper .blog-text {
+  color: #fff;
+}
+
+body.dark .read-more-btn {
+  background-color: #fff;
+  color: #000;
+}
+
+body.dark .read-more-btn:hover {
+  background-color: #ddd;
+}
