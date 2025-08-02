@@ -2,6 +2,9 @@
 html {
   scroll-behavior: smooth;
 }
+html.loaded {
+  scroll-behavior: smooth !important;
+}
 html, body, #root {
   height: 100%;
   overflow: hidden;  /* hide default scrollbar */
