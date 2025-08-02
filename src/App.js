@@ -1,41 +1,53 @@
-import React, { useContext } from "react"
-import { Footer } from "./components/footer/Footer"
-import { GoogleTagManager } from "./components/tagmanager/tagmanager"
-import { Header } from "./components/header/Header"
-import { Home } from "./pages/home/Home"
-import { Login } from "./pages/login/Login"
-import { Regsiter } from "./pages/login/Regsiter"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { DetailsPages } from "./pages/details/DetailsPages"
-import { Account } from "./pages/account/Account"
-import { Create } from "./components/create/Create"
-import { Context } from "./context/Context"
-import { Jobs } from "./pages/jobs/jobs.jsx"
-import { Blogpage } from "./pages/blogpage/blogpage.jsx"
-import { Shelter } from "./pages/shelter/shelter.jsx"
+import React, { useContext, useEffect } from "react";
+import { Footer } from "./components/footer/Footer";
+import { ScrollToTop } from "./components/scroll/scrollToTop";
+import { GoogleTagManager } from "./components/tagmanager/tagmanager";
+import { Header } from "./components/header/Header";
+import { Home } from "./pages/home/Home";
+import { Login } from "./pages/login/Login";
+import { Regsiter } from "./pages/login/Regsiter";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { DetailsPages } from "./pages/details/DetailsPages";
+import { Account } from "./pages/account/Account";
+import { Create } from "./components/create/Create";
+import { Context } from "./context/Context";
+import { Jobs } from "./pages/jobs/jobs.jsx";
+import { Blogpage } from "./pages/blogpage/blogpage.jsx";
+import { Shelter } from "./pages/shelter/shelter.jsx";
+import SmoothScroller from "./components/scroll/SmoothScroller";
 
 const App = () => {
-  //after login
-  const { user } = useContext(Context)
+  const { user } = useContext(Context);
+
+  // Fix for initial scroll freeze on homepage
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollBy(0, 1);
+      window.scrollBy(0, -1);
+    }, 100); // Delay ensures DOM is ready
+  }, []);
+
   return (
-    <>
-      <Router>
+    <Router>
+      <SmoothScroller>
         <Header />
-        <GoogleTagManager/>
+        <GoogleTagManager />
+        <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Regsiter/>} />
-          <Route path="/post/:id" element={<DetailsPages/>} />
-          <Route path="/jobs" element={<Jobs/>} />
-          <Route path="/blogs" element={<Blogpage/>} />
-          <Route path="/shelter" element={<Shelter/>} />
-          <Route path="/account" element={<Account/>} />
-          <Route path="/create" element={<Create/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Regsiter />} />
+          <Route path="/post/:id" element={<DetailsPages />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/blogs" element={<Blogpage />} />
+          <Route path="/shelter" element={<Shelter />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/create" element={<Create />} />
         </Routes>
         <Footer />
-      </Router>
-    </>
-  )
-}
-export default App
+      </SmoothScroller>
+    </Router>
+  );
+};
+
+export default App;
