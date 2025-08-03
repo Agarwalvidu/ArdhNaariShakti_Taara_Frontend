@@ -1,145 +1,342 @@
-/* Global container */
-.donation-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  gap: 60px;
-  flex-wrap: wrap;
+/* Feedback Section */
+.feedback-section {
+  padding: var(--space-3xl) 0;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Flip card container */
+.feedback-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+}
+
+.feedback-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.feedback-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.feedback-text {
+  max-width: 500px;
+}
+
+.feedback-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: var(--white);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-xl);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.feedback-title {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+}
+
+.feedback-description {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-2xl);
+}
+
+.feedback-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  transition: all var(--transition-normal);
+}
+
+.feature-item:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.feature-icon {
+  font-size: var(--text-xl);
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.feature-item span {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.feedback-btn {
+  font-size: var(--text-base);
+  padding: var(--space-md) var(--space-xl);
+}
+
+.feedback-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+/* Flip Card */
 .flip-card {
   width: 300px;
-  height: 300px;
+  height: 400px;
   perspective: 1000px;
+  cursor: pointer;
 }
 
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.7s ease-in-out;
+  text-align: center;
+  transition: transform var(--transition-slow);
   transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* Front and Back Faces */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
   backface-visibility: hidden;
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .flip-card-front {
-  background-color: #fff;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.flip-card-front img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .flip-card-back {
-  background: linear-gradient(135deg, #ff6a88 0%, #ff99ac 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: var(--white);
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content {
+  padding: var(--space-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
-  text-align: center;
-  transform: rotateY(180deg);
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(255, 105, 135, 0.3);
-  transition: background 0.3s ease-in-out;
+  gap: var(--space-lg);
 }
 
-.flip-card-back h2 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+.card-icon {
+  font-size: var(--text-4xl);
+  color: var(--white);
 }
 
-.flip-card-back p {
-  font-size: 1rem;
-  max-width: 250px;
+.card-content h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin: 0;
+  color: var(--white);
 }
 
-/* Text block beside the card */
-.donation-text-block {
-  max-width: 600px;
-  text-align: left;
+.card-content p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  color: var(--white);
+  opacity: 0.9;
 }
 
-.donation-text-block h1 {
-  font-size: 2.5rem;
-  color: #111827;
-  margin-bottom: 20px;
-  position: relative;
+/* Animation for flip card */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-.donation-text-block h1::after {
-  content: "";
-  width: 60px;
-  height: 4px;
-  background: #ff597a;
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  border-radius: 4px;
+.flip-card {
+  animation: float 6s ease-in-out infinite;
 }
 
-.donation-description {
-  font-size: 1.1rem;
-  color: #374151;
-  line-height: 1.7;
-  margin-bottom: 30px;
+/* Hover effects */
+.feedback-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Call to Action Button */
-.feedback-btn {
-  background-color: #ff597a;
-  color: #fff;
-  padding: 12px 28px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.feature-item:hover .feature-icon {
+  transform: scale(1.1);
+  color: var(--secondary-color);
 }
 
 .feedback-btn:hover {
-  background-color: #e84868;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(255, 89, 122, 0.4);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .donation-wrapper {
-    flex-direction: column;
-    padding: 40px 20px;
-  }
-
-  .donation-text-block {
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .feedback-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
     text-align: center;
   }
+  
+  .feedback-text {
+    max-width: 100%;
+  }
+  
+  .feedback-features {
+    align-items: center;
+  }
+  
+  .feature-item {
+    max-width: 400px;
+  }
+}
 
-  .donation-text-block h1::after {
-    left: 50%;
-    transform: translateX(-50%);
+@media (max-width: 768px) {
+  .feedback-section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .feedback-title {
+    font-size: var(--text-3xl);
+  }
+  
+  .feedback-description {
+    font-size: var(--text-base);
+  }
+  
+  .feedback-features {
+    gap: var(--space-sm);
+  }
+  
+  .feature-item {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .flip-card {
+    width: 250px;
+    height: 350px;
+  }
+  
+  .card-content {
+    padding: var(--space-lg);
+  }
+  
+  .card-icon {
+    font-size: var(--text-3xl);
+  }
+  
+  .card-content h3 {
+    font-size: var(--text-lg);
+  }
+  
+  .card-content p {
+    font-size: var(--text-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .feedback-title {
+    font-size: var(--text-2xl);
+  }
+  
+  .feedback-description {
+    font-size: var(--text-sm);
+  }
+  
+  .feedback-badge {
+    font-size: var(--text-xs);
+    padding: var(--space-xs) var(--space-md);
+  }
+  
+  .feature-item {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-sm);
+  }
+  
+  .flip-card {
+    width: 200px;
+    height: 300px;
+  }
+  
+  .card-content {
+    padding: var(--space-md);
+    gap: var(--space-md);
+  }
+  
+  .card-icon {
+    font-size: var(--text-2xl);
+  }
+  
+  .card-content h3 {
+    font-size: var(--text-base);
+  }
+  
+  .card-content p {
+    font-size: var(--text-xs);
+  }
+}
+
+/* Animation for page load */
+.feedback-section {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
