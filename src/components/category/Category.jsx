@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick"
 import { GrFormPrevious } from "react-icons/gr"
 import { MdNavigateNext } from "react-icons/md"
+import { HiSparkles } from "react-icons/hi"
 import axios from "axios"
 import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
@@ -13,44 +14,58 @@ import { Link } from "react-router-dom"
 const SampleNextArrow = (props) => { 
   const { onClick } = props
   return (
-    <div className='control-btn' onClick={onClick}>
-      <button className='next'>
+    <div className='control-btn next' onClick={onClick}>
+      <button>
         <MdNavigateNext className='icon' />
       </button>
     </div>
   )
 }
+
 const SamplePrevArrow = (props) => {
   const { onClick } = props
   return (
-    <div className='control-btn' onClick={onClick}>
-      <button className='prev'>
+    <div className='control-btn prev' onClick={onClick}>
+      <button>
         <GrFormPrevious className='icon' />
       </button>
     </div>
   )
 }
+
 export const Category = () => {
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
     responsive: [
       {
-        breakpoint: 800,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
         },
       },
     ],
   }
 
   const [cats, setCat] = useState([])
+  const [loading, setLoading] = useState(false)
   const { search } = useLocation()
 
   useEffect(() => {
@@ -60,28 +75,37 @@ export const Category = () => {
     // }
     // getCat()
   }, [search])
+
   return (
-    <>
-      <section className='category'>
-        <div className='content'>
-          <Slider {...settings}>
-            {category.map((item) => (
-              <div className='boxs'>
-                <div className='box' key={item.id}>
-                  <img src={item.cover} alt='cover' />
-                  {item.category !== "" && (
-                    <div className='overlay'>
-                      <Link to={`/?cat=${item.name}`} className='link'>
-                        <h4 className="card_category">{item.category}</h4>
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </Slider>
+    <section className={`category ${loading ? 'loading' : ''}`}>
+      <div className="content">
+        <div className="category-header">
+          <h2 className="category-title">
+            <HiSparkles style={{ marginRight: '8px', display: 'inline' }} />
+            Discover Our Community
+          </h2>
+          <p className="category-subtitle">
+            Explore stories, resources, and support networks designed to empower and uplift the transgender community
+          </p>
         </div>
-      </section>
-    </>
+        
+        <Slider {...settings}>
+          {category.map((item) => (
+            <div className='boxs' key={item.id}>
+              <div className='box'>
+                <img src={item.cover} alt={item.title} />
+                {item.category !== "" && (
+                  <div className='overlay'>
+                    <Link to={`/?cat=${item.name}`} className='link'>
+                      <h4 className="card_category">{item.category}</h4>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </section>
   )
 }
