@@ -1,113 +1,381 @@
-/* ------ butterfly animation --------- */
+/* Hero Section Styles */
+.hero-section {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
 
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text {
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--bg-gradient);
+  color: var(--white);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-2xl);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-pink);
+}
+
+.hero-title {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+}
+
+.gradient-text {
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-2xl);
+  max-width: 500px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-gradient);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: var(--text-lg);
+}
+
+.stat-item span {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Butterfly Animation */
 .butterfly-container {
-    display: flex;
-    align-items: center;
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.butterfly {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.wings {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: var(--bg-gradient);
+  border-radius: 50% 0 50% 0;
+  animation: flapLeft 0.5s ease-in-out infinite alternate;
+}
+
+.wings.right {
+  right: 0;
+  transform: rotate(45deg);
+  animation: flapRight 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-20px);
+  }
+}
+
+@keyframes flapLeft {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1.1);
+  }
+}
+
+@keyframes flapRight {
+  0% {
+    transform: rotate(45deg) scale(1);
+  }
+  100% {
+    transform: rotate(90deg) scale(1.1);
+  }
+}
+
+/* Floating Elements */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floating-card {
+  position: absolute;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  animation: floatCard 4s ease-in-out infinite;
+}
+
+.floating-card.card-1 {
+  top: 10%;
+  right: 10%;
+  animation-delay: 0s;
+}
+
+.floating-card.card-2 {
+  bottom: 20%;
+  left: 5%;
+  animation-delay: 1s;
+}
+
+.floating-card.card-3 {
+  top: 60%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+/* Hero Wave */
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: var(--white);
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 75% 50%, 50% 0, 25% 50%, 0 0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: var(--text-4xl);
+  }
+  
+  .hero-stats {
     justify-content: center;
-    width: 800px;
-    height: 500px;
-    background-color: transparent;
-    
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+  
+  .butterfly-container {
+    width: 150px;
+    height: 150px;
   }
   
   .butterfly {
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateX(70deg) rotateY(30deg) rotateZ(-50deg) translateY(0px);
-    width: 30px;
-    top: -300px;
-    left: 100px;
-    
-  }
-  
-  
-  .butterfly::before {
-    content: "";
-    position: absolute;
-    background: linear-gradient(to right, #08fdd8, #302663, #24243c);
-    border-radius: 50%;
-    display: block;
-    margin-left: 10px;
-    height: 100px;
-    width: 25px;
-    top: -15px;
-    left: 50%;
-    transform: rotateY(100deg);
-    outline: 1px solid transparent;
-    
+    width: 50px;
+    height: 50px;
   }
   
   .wings {
-    display: block;
-    position: absolute;
-    /* opacity: 0.8; */
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 80vh;
   }
   
-  .wings:first-child {
-    animation: left 1s infinite;
-    animation-direction: alternate;
-    animation-fill-mode: reverse;
-    z-index: 3;
-    right: 0;
+  .hero-content {
+    padding: var(--space-2xl) var(--space-md);
   }
   
-  .wings:last-child {
-    animation: right 1s infinite;
-    animation-direction: alternate;
-    animation-fill-mode: reverse;
-    z-index: 1;
-    right: 0;
+  .hero-title {
+    font-size: var(--text-3xl);
   }
   
-  .fly,
-  .fly::after {
-    content: "";
-    position: absolute;
-    background: linear-gradient(to right, #f13c07, blue);
-    overflow: hidden;
-    border-radius: 50%;
-    transform-origin: 100% 50%;
-    top: 0;
-    right: 0;
+  .hero-subtitle {
+    font-size: var(--text-lg);
   }
   
-  .fly:first-child {
-    height: 80px;
-    text-align: center;
-    top: 2px;
-    transform: rotateZ(30deg);
-    width: 130px;
+  .hero-stats {
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: center;
   }
   
-  .fly:last-child {
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .floating-card {
+    display: none;
+  }
+  
+  .butterfly-container {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .butterfly {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .wings {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 70vh;
+  }
+  
+  .hero-content {
+    padding: var(--space-xl) var(--space-sm);
+  }
+  
+  .hero-title {
+    font-size: var(--text-2xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--text-base);
+  }
+  
+  .hero-badge {
+    font-size: var(--text-xs);
+    padding: var(--space-xs) var(--space-md);
+  }
+  
+  .stat-icon {
+    width: 35px;
+    height: 35px;
+    font-size: var(--text-base);
+  }
+  
+  .butterfly-container {
     width: 100px;
-    height: 50px;
-    transform: rotateZ(-30deg);
+    height: 100px;
   }
   
-  @keyframes left {
-    0% {
-      transform: rotateY(-60deg);
-    }
-  
-    100% {
-      transform: rotateY(50deg);
-    }
+  .butterfly {
+    width: 35px;
+    height: 35px;
   }
   
-  @keyframes right {
-    0% {
-      transform: rotateY(180deg);
-    }
-  
-    100% {
-      transform: rotateY(80deg);
-    }
+  .wings {
+    width: 18px;
+    height: 18px;
   }
-  
-  .wave {
-    animation: wave 10s linear infinite;
-    transform-origin: 100% 100%;
+}
+
+/* Animation for hero section */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effects */
+.hero-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-item:hover .stat-icon {
+  transform: scale(1.1);
+  transition: transform var(--transition-fast);
+}
+
+.floating-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-fast);
+}
   
   
