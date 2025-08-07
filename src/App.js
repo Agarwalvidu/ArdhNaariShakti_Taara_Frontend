@@ -13,6 +13,7 @@ import { Context } from "./context/Context"
 import { Jobs } from "./pages/jobs/jobs.jsx"
 import { Blogpage } from "./pages/blogpage/blogpage.jsx"
 import { Shelter } from "./pages/shelter/shelter.jsx"
+import { Gallery } from "./pages/gallery/Gallery.jsx"
 
 const App = () => {
   //after login
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/shelter" element={<Shelter/>} />
           <Route path="/account" element={<Account/>} />
           <Route path="/create" element={<Create/>} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
         <Footer />
       </Router>
