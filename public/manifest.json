@@ -1,0 +1,10 @@
+{
+  "short_name": "Ardh Naari Shakti",
+  "name": "Ardh Naari Shakti Tara - A Community Platform",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "description": "A community-focused platform built to support and uplift transgender and marginalized individuals by offering centralized access to vital services and information."
+}
