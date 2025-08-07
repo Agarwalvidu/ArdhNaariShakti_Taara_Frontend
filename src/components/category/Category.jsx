@@ -23,12 +23,15 @@ const SampleNextArrow = (props) => {
 const SamplePrevArrow = (props) => {
   const { onClick } = props
   return (
-    <div className='control-btn' onClick={onClick}>
-      <button className='prev'>
-        <GrFormPrevious className='icon' />
-      </button>
-    </div>
-  )
+  <button
+    onClick={onClick}
+    className='p-2 rounded-full bg-white/80 hover:bg-white hover:shadow-lg dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-all cursor-pointer'
+    aria-label='Previous Slide'
+  >
+    <GrFormPrevious className='text-2xl text-neutral-700 dark:text-white' />
+  </button>
+)
+
 }
 export const Category = () => {
   const settings = {

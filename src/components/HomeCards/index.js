@@ -24,6 +24,7 @@ export const About = () => {
           <AboutP>Your guide and friend </AboutP>
           </AboutCard> 
           </Link>
+
           <Link to='/blogs'>
           <AboutCard>
           <AboutIcon src={blog}></AboutIcon>
@@ -31,6 +32,7 @@ export const About = () => {
           <AboutP>Let's get motivated </AboutP>
           </AboutCard>
           </Link>
+
           <Link to='/shelter'>
           <AboutCard>
           <AboutIcon src={shelter}></AboutIcon>
@@ -38,6 +40,7 @@ export const About = () => {
           <AboutP>A safe place</AboutP>
           </AboutCard>
           </Link>
+          
           <Link to='/jobs'>
           <AboutCard>
           <AboutIcon src={jobs}></AboutIcon>

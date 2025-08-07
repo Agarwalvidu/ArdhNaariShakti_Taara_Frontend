@@ -6,15 +6,14 @@
 .login .backImg {
   width: 100%;
   height: 50vh;
-  position: relative;
   min-height: 300px;
+  position: relative;
 }
 
 .login .backImg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  min-height: inherit;
 }
 
 .login .text {
@@ -42,11 +41,6 @@
   margin: 0;
 }
 
-button:disabled {
-  background: #474a7c;
-  cursor: not-allowed;
-}
-
 .login .container {
   width: 100%;
   max-width: 1200px;
@@ -55,7 +49,6 @@ button:disabled {
   box-sizing: border-box;
 }
 
-/* Form styles and responsiveness */
 .login form {
   display: flex;
   flex-direction: column;
@@ -67,17 +60,24 @@ button:disabled {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
 }
 
 .login form input,
 .login form button {
-  box-sizing: border-box;
+  width: 100%;
   padding: 0.75rem 1rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
   border-radius: 6px;
-  width: 100%;
+  box-sizing: border-box;
+}
+
+.login form input {
+  border: 1px solid #ccc;
+}
+
+.login form input:focus {
+  border-color: #888;
+  outline: none;
 }
 
 .login form button {
@@ -89,8 +89,12 @@ button:disabled {
   transition: background-color 0.3s;
 }
 
+button:disabled {
+  background: #474a7c;
+  cursor: not-allowed;
+}
 
-/* Tablet styles */
+/* Tablet (<= 768px) */
 @media screen and (max-width: 768px) {
   .login {
     margin-bottom: 30px;
@@ -103,9 +107,9 @@ button:disabled {
   }
 
   .login .text {
-    width: 85%;
     top: 45%;
     transform: translate(-50%, -45%);
+    width: 85%;
   }
 
   .login .text h1 {
@@ -121,8 +125,8 @@ button:disabled {
   }
 
   .login form {
-    padding: 1rem;
     width: 95%;
+    padding: 1rem;
   }
 
   .login form input,
@@ -131,7 +135,7 @@ button:disabled {
   }
 }
 
-/* Mobile styles */
+/* Mobile (<= 480px) */
 @media screen and (max-width: 480px) {
   .login {
     margin-bottom: 20px;
@@ -144,10 +148,10 @@ button:disabled {
   }
 
   .login .text {
-    width: 90%;
     top: 50%;
     transform: translate(-50%, -50%);
     padding: 0 15px;
+    width: 90%;
   }
 
   .login .text h1 {
@@ -158,10 +162,6 @@ button:disabled {
   .login .text h3 {
     font-size: 1rem;
     margin-bottom: 8px;
-  }
-
-  .login .container {
-    padding: 0 15px;
   }
 
   .login form {
@@ -176,7 +176,7 @@ button:disabled {
   }
 }
 
-/* Extra small mobile devices */
+/* Extra Small Devices (<= 320px) */
 @media screen and (max-width: 320px) {
   .login .backImg,
   .login .backImg img {
@@ -197,7 +197,7 @@ button:disabled {
   }
 }
 
-/* Large screens */
+/* Large Screens (>= 1200px) */
 @media screen and (min-width: 1200px) {
   .login .backImg,
   .login .backImg img {

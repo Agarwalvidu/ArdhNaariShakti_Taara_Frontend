@@ -39,9 +39,9 @@
   border-collapse: separate;
   border-spacing: 0;
   border-radius: 15px;
+  background: white;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  background: white;
 }
 
 .shelter-table th,
@@ -49,7 +49,6 @@
   padding: 16px 20px;
   text-align: left;
   border-bottom: 1px solid #f1f3f4;
-  position: relative;
   vertical-align: middle;
 }
 
@@ -83,11 +82,7 @@
 }
 
 .shelter-table tbody tr:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(102, 126, 234, 0.1) 0%,
-    rgba(118, 75, 162, 0.1) 100%
-  );
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
@@ -114,8 +109,8 @@
   border-radius: 25px;
   font-weight: 600;
   font-size: 12px;
-  transition: all 0.3s ease;
   text-transform: uppercase;
+  transition: all 0.3s ease;
   letter-spacing: 0.5px;
 }
 
@@ -145,14 +140,11 @@
   font-family: "Courier New", monospace;
   font-weight: 600;
   color: #667eea;
-  /* background: #f7fafc; */
   padding: 8px 12px;
   border-radius: 6px;
-  /* display: inline-block; */
   text-align: center;
 }
 
-/* Center the contact number cell */
 .shelter-table td:nth-child(6) {
   text-align: center;
 }
@@ -217,17 +209,17 @@
 
   .table-container {
     padding: 20px;
-    margin: 0 10px;
+    margin: 0;
   }
 
   .shelter-table th,
   .shelter-table td {
-    padding: 12px 8px;
+    padding: 10px 6px;
     font-size: 12px;
   }
 
   .map-link {
-    padding: 6px 12px;
+    padding: 6px 10px;
     font-size: 11px;
   }
 }
@@ -239,12 +231,21 @@
 
   .table-container {
     padding: 15px;
-    margin: 0 5px;
+    margin: 0;
+  }
+
+  .shelter-table {
+    font-size: 11px;
   }
 
   .shelter-table th,
   .shelter-table td {
-    padding: 10px 6px;
+    padding: 8px 5px;
     font-size: 11px;
+  }
+
+  .map-link {
+    font-size: 10px;
+    padding: 5px 8px;
   }
 }

@@ -1,25 +1,26 @@
-/* Global container */
 .donation-wrapper {
   display: flex;
+  justify-content: space-between; /* even spacing */
   align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  gap: 60px;
   flex-wrap: wrap;
+  gap: 2rem;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Flip card container */
 .flip-card {
   width: 300px;
   height: 300px;
   perspective: 1000px;
+  flex-shrink: 0; /* prevent shrinking */
 }
 
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.7s ease-in-out;
+  transition: transform 0.8s;
   transform-style: preserve-3d;
 }
 
@@ -27,16 +28,15 @@
   transform: rotateY(180deg);
 }
 
-/* Front and Back Faces */
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
   backface-visibility: hidden;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .flip-card-front {
@@ -80,7 +80,8 @@
 /* Text block beside the card */
 .donation-text-block {
   max-width: 600px;
-  text-align: left;
+  flex: 1;
+  min-width: 280px;
 }
 
 .donation-text-block h1 {
@@ -130,6 +131,7 @@
 @media screen and (max-width: 768px) {
   .donation-wrapper {
     flex-direction: column;
+    align-items: center;
     padding: 40px 20px;
   }
 
@@ -142,4 +144,3 @@
     transform: translateX(-50%);
   }
 }
-

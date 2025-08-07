@@ -1,52 +1,128 @@
 .accountInfo {
   margin: 80px 0;
-}
-.accountInfo .container {
-  padding: 50px;
-  max-width: 60%;
-  margin: auto;
-}
-.accountInfo .content {
-  margin-top: 80px;
-  display: flex;
-  justify-content: flex-start;
-  position: relative;
-}
-.accountInfo .left {
-  width: 150px;
-  position: relative;
-}
-.accountInfo .right {
-  width: calc(100% - 180px);
-  margin-left: 50px;
+  background: #f9f9f9;
+  padding: 40px 0;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
 }
 
-.accountInfo .left .img input {
+.accountInfo .container {
+  padding: 40px;
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.accountInfo .container h1 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.accountInfo .content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+}
+
+.accountInfo .left {
+  flex: 0 0 150px;
+  position: relative;
+}
+
+.accountInfo .img {
+  position: relative;
   width: 150px;
   height: 150px;
-  position: relative;
-  z-index: 2;
-  opacity: 0;
 }
-.accountInfo .icon,
-.accountInfo .img img {
+
+.accountInfo .img img,
+.accountInfo .icon {
   position: absolute;
   top: 0;
   left: 0;
   width: 150px;
   height: 150px;
-  z-index: 1;
   border-radius: 50%;
   object-fit: cover;
+  z-index: 1;
 }
+
+.accountInfo .left .img input {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.accountInfo .right {
+  flex: 1;
+}
+
 .accountInfo .right label {
-  font-size: 17px;
-  color: #000;
-  margin-bottom: 10px;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 6px;
   display: block;
-}
-.profile h4 {
-  text-transform: capitalize;
-  color: #000;
   font-weight: 500;
+}
+
+.accountInfo .right input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.accountInfo .right input:focus {
+  outline: none;
+  border-color: #5b69ff;
+  box-shadow: 0 0 0 2px rgba(91, 105, 255, 0.2);
+}
+
+.accountInfo .right .button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #5b69ff;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.accountInfo .right .button:hover {
+  background-color: #4a57e3;
+}
+
+.accountInfo .right span {
+  display: block;
+  margin-top: 15px;
+  color: green;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .accountInfo .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .accountInfo .right {
+    width: 100%;
+    margin-left: 0;
+  }
 }

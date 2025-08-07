@@ -8,6 +8,11 @@ header {
 /* nav */
 nav ul {
   display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 nav a {
   text-transform: capitalize;
@@ -31,13 +36,40 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* Active link styling */
-.nav-link.active {
-  color: #000;
-  font-weight: bold;
-  border-bottom: 2px solid #000;
+.nav-link {
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #334155;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  padding: 0.25rem 0;
 }
 
+/* Hover effect */
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+/* Active link styling */
+.nav-link.active {
+  font-weight: 600;
+  color: #0f172a;
+  border-bottom: 2px solid #0f172a;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid #1e40af;
+  outline-offset: 3px;
+}
+
+/* Account section spacing fix */
+.account {
+  margin-left: auto;
+  gap: 0.75rem;
+}
 /* User */
 .profile {
   margin-left: 30px;
