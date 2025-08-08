@@ -3,6 +3,7 @@ import { AiFillTwitterCircle, AiFillLinkedin } from "react-icons/ai"
 import { BsFacebook } from "react-icons/bs"
 import { RiInstagramFill } from "react-icons/ri"
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md"
+import { Link } from "react-router-dom"
 import logo from "../../assets/images/logo.png"
 import "./footer.css"
 
@@ -19,7 +20,7 @@ export const Footer = () => {
               <h3>Taara</h3>
             </div>
             <p className="footer-description">
-              Empowering women through technology, innovation, and community support. 
+              Empowering women through technology, innovation, and community support.
               Join us in creating a brighter future for all.
             </p>
             <div className="social-links">
@@ -35,7 +36,6 @@ export const Footer = () => {
               <a href="#" className="social-link" aria-label="LinkedIn">
                 <AiFillLinkedin />
               </a>
-
             </div>
           </div>
 
@@ -54,11 +54,11 @@ export const Footer = () => {
           <div className="footer-section">
             <h4>Resources</h4>
             <ul className="footer-links">
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/contact">Contact</a></li>
-              <li><a href="/privacy">Privacy Policy</a></li>
-              <li><a href="/terms">Terms of Service</a></li>
-              <li><a href="/help">Help Center</a></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+              <li><Link to="/terms">Terms of Service</Link></li>
+              <li><Link to="/help">Help Center</Link></li>
             </ul>
           </div>
 
