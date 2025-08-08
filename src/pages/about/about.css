@@ -1,0 +1,40 @@
+.about-page .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  line-height: 1.8;
+}
+
+.about-page h1,
+.about-page h2 {
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-page p {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.about-page ul {
+  margin: 1rem 0 2rem 1.5rem;
+  padding-left: 1rem;
+  list-style-type: disc;
+}
+
+.about-page li {
+  margin-bottom: 0.75rem;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 12px;
+  max-width: 900px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+}
