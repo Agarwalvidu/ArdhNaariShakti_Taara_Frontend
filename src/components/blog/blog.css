@@ -151,25 +151,11 @@
   }
 }
 
-.add-post-container{
-  display: flex;
-  justify-content:center;
-  align-items: center;
-  margin-top: 38px;
-}
-
-.add-post-button {
-  background-color: #040825;
-  color: white;
-  padding: 12px 24px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 16px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.add-post-button:hover {
-  background-color: #cb249c;
-  transform: scale(1.05);
-}
+/* display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    flex-direction: column-reverse; */
+/* display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    flex-direction: column-reverse; */

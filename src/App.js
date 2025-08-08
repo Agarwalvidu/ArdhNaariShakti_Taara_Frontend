@@ -14,7 +14,7 @@ import { Jobs } from "./pages/jobs/jobs.jsx"
 import { Blogpage } from "./pages/blogpage/blogpage.jsx"
 import { Shelter } from "./pages/shelter/shelter.jsx"
 import { Gallery } from "./pages/gallery/Gallery.jsx"
-import { Contact } from "./pages/contact/Contact.jsx";
+
 const App = () => {
   //after login
   const { user } = useContext(Context)
@@ -34,7 +34,6 @@ const App = () => {
           <Route path="/account" element={<Account/>} />
           <Route path="/create" element={<Create/>} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </Router>
