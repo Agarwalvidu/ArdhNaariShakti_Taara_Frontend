@@ -1,65 +1,88 @@
-import React, { useEffect } from "react"
-import "./create.css"
-import { IoIosAddCircleOutline } from "react-icons/io"
-import { useState } from "react"
-import { useContext } from "react"
-import { Context } from "../../context/Context"
-import axios from "axios"
-import { useLocation } from "react-router-dom"
+import React, { useContext, useState } from "react";
+import "./create.css";
+import { Context } from "../../context/Context";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export const Create = () => {
-  const [title, setTitle] = useState("")
-  const [desc, setDesc] = useState("")
-  const [file, setFile] = useState(null)
-  const { user } = useContext(Context)
+const Create = () => {
+  const { user } = useContext(Context);
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [file, setFile] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    setSubmitted(true); // Show "Submitted!" on button click
 
     const newPost = {
       username: user.username,
       title,
       desc,
-      file,
-    }
+    };
 
     if (file) {
-      const data = new FormData()
-      const filename = Date.now() + file.name
-      data.append("name", filename)
-      data.append("file", file)
-      newPost.photo = filename
+      const data = new FormData();
+      const filename = Date.now() + file.name;
+      data.append("name", filename);
+      data.append("file", file);
+      newPost.photo = filename;
 
       try {
-        await axios.post("https://taara-backend.onrender.com/upload", data)
-      } catch (error) {
-        console.log(error)
+        await axios.post("https://taarabackend.onrender.com/api/upload", data);
+      } catch (err) {
+        console.error(err);
       }
     }
+
     try {
-      const res = await axios.post("https://taara-backend.onrender.com/posts", newPost)
-      window.location.replace("/")
-    } catch (error) {}
-  }
+      await axios.post("https://taarabackend.onrender.com/api/posts", newPost);
+      setSuccess(true);
+      setTimeout(() => navigate("/"), 1500); // Redirect after 1.5s
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
-    <>
-      <section className='newPost'>
-        <div className='container boxItems'>
-          <div className='img '>{file && <img src={URL.createObjectURL(file)} alt='images' />}</div>
-          <form onSubmit={handleSubmit}>
-            <div className='inputfile flexCenter'>
-              <label htmlFor='inputfile'>
-                <IoIosAddCircleOutline />
-              </label>
-              <input type='file' id='inputfile' style={{ display: "none" }} onChange={(e) => setFile(e.target.files[0])} />
-            </div>
-            <input type='text' placeholder='Title' onChange={(e) => setTitle(e.target.value)} />
-            <textarea name='' id='' cols='30' rows='10' onChange={(e) => setDesc(e.target.value)}></textarea>
-            <button className='button'>Create Post</button>
-          </form>
+    <div className="create flexCenter">
+      <form onSubmit={handleSubmit} className="form flexColStart">
+        <h1 className="form-title">Create a New Post</h1>
+        <h3 className="form-subtitle">Share your story with the world</h3>
+
+        {submitted && <p className="submitted-msg">✅ Submitted!</p>}
+        {success && <p className="success-msg">🎉 Post created successfully!</p>}
+
+        <div className="inputfile flexCenter">
+          <label htmlFor="fileInput">Choose file</label>
+          <input
+            type="file"
+            id="fileInput"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
         </div>
-      </section>
-    </>
-  )
-}
+
+        <input
+          type="text"
+          placeholder="Enter a title..."
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+
+        <textarea
+          placeholder="Write your thoughts here..."
+          onChange={(e) => setDesc(e.target.value)}
+          required
+        />
+
+        <button className="button" type="submit">
+          Create Post
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Create;
