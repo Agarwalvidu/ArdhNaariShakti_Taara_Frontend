@@ -115,24 +115,6 @@ form input {
   max-width: 95%;
   margin: auto;
 }
-footer {
-  margin-top: 50px;
-  padding: 10px;
-}
-footer .icon {
-  font-size: 20px;
-  margin-left: 10px;
-}
-.link {
-  margin-top: 20px;
-  color: blue;
-}
-@media screen and (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 
 
 :root {

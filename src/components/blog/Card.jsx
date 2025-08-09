@@ -1,6 +1,11 @@
 import React from "react";
 import "./blog.css";
-import { AiOutlineTags, AiOutlineClockCircle, AiOutlineComment, AiOutlineShareAlt } from "react-icons/ai";
+import {
+  AiOutlineTags,
+  AiOutlineClockCircle,
+  AiOutlineComment,
+  AiOutlineShareAlt
+} from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export const Card = ({ posts }) => {
@@ -13,14 +18,19 @@ export const Card = ({ posts }) => {
           <div className="box boxItems" key={item.id || item._id}>
             <div className="img">
               {item?.photo && (
-                <img src={PublicFlo + item.photo} alt={item?.title || "Post image"} />
+                <img
+                  src={PublicFlo + item.photo}
+                  alt={item?.title || "Post image"}
+                />
               )}
             </div>
             <div className="details">
               <div className="tag">
                 <AiOutlineTags className="icon" />
                 {(item?.categories || []).map((c, index) => (
-                  <a href="/" key={index}>#{c?.name || ""}</a>
+                  <a href="/" key={index}>
+                    #{c?.name || ""}
+                  </a>
                 ))}
               </div>
 
@@ -28,11 +38,19 @@ export const Card = ({ posts }) => {
                 <h3>{item?.title || "Untitled Post"}</h3>
               </Link>
 
-              <p>{item?.desc ? item.desc.slice(0, 180) + "..." : "No description available."}</p>
+              <p>
+                {item?.desc
+                  ? item.desc.slice(0, 180) + "..."
+                  : "No description available."}
+              </p>
 
               <div className="date">
                 <AiOutlineClockCircle className="icon" />
-                <label>{item?.createdAt ? new Date(item.createdAt).toDateString() : "Date not available"}</label>
+                <label>
+                  {item?.createdAt
+                    ? new Date(item.createdAt).toDateString()
+                    : "Date not available"}
+                </label>
 
                 <AiOutlineComment className="icon" /> <label>27</label>
                 <AiOutlineShareAlt className="icon" /> <label>SHARE</label>

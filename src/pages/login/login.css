@@ -1,214 +1,226 @@
-.login {
+.login-hero {
   position: relative;
-  margin-bottom: 50px;
-}
-
-.login .backImg {
   width: 100%;
   height: 50vh;
-  position: relative;
   min-height: 300px;
 }
-
-.login .backImg img {
+.login-hero img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  min-height: inherit;
 }
-
-.login .text {
+.login-hero-text {
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
-  z-index: 1;
   text-align: center;
-  color: #fff;
-  width: 90%;
-  max-width: 600px;
+  color: white;
+  z-index: 1;
   padding: 0 1rem;
 }
-
-.login .text h3 {
+.login-hero-text h3 {
   font-weight: 600;
   margin-bottom: 10px;
   font-size: 1.2rem;
 }
-
-.login .text h1 {
+.login-hero-text h1 {
   font-size: 2.5rem;
   line-height: 1.2;
-  margin: 0;
 }
 
-button:disabled {
-  background: #474a7c;
+.login-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.login-image-container {
+  flex: 1;
+  display: none;
+}
+.login-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: transparent;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
+.login-form h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+@media (max-width: 640px) {
+  .login-form h2 {
+    font-size: 1.4rem;
+    color: #333;
+  }
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group .button {
+  width: 100%;
+  padding: 0.85rem;
+  border: none;
+  background: linear-gradient(90deg, #D582E8, #A091D6);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background: #1c279b;
   cursor: not-allowed;
 }
 
-.login .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-  box-sizing: border-box;
+.error-message {
+  color: #d93025;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-/* Form styles and responsiveness */
-.login form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  max-width: 600px;
-  margin: 2rem auto 0;
-  padding: 1rem;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
+.register-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #555;
+}
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.register-link a:hover {
+  text-decoration: underline;
 }
 
-.login form input,
-.login form button {
-  box-sizing: border-box;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  width: 100%;
-}
-
-.login form button {
-  background-color: black;
-  color: #fff;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-
-/* Tablet styles */
-@media screen and (max-width: 768px) {
-  .login {
-    margin-bottom: 30px;
+@media (min-width: 1024px) {
+  .login-image-container {
+    display: block;
   }
+}
 
-  .login .backImg,
-  .login .backImg img {
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-wrapper input {
+  width: 100%;
+}
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-100%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  font-weight: 600;
+  padding: 4px;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .login-hero {
     height: 40vh;
     min-height: 250px;
   }
-
-  .login .text {
-    width: 85%;
+  .login-hero-text {
     top: 45%;
     transform: translate(-50%, -45%);
   }
-
-  .login .text h1 {
+  .login-hero-text h1 {
     font-size: 2rem;
   }
-
-  .login .text h3 {
+  .login-hero-text h3 {
     font-size: 1.1rem;
-  }
-
-  .login .container {
-    padding: 0 20px;
-  }
-
-  .login form {
-    padding: 1rem;
-    width: 95%;
-  }
-
-  .login form input,
-  .login form button {
-    font-size: 0.95rem;
   }
 }
 
-/* Mobile styles */
 @media screen and (max-width: 480px) {
-  .login {
-    margin-bottom: 20px;
-  }
-
-  .login .backImg,
-  .login .backImg img {
+  .login-hero {
     height: 35vh;
     min-height: 200px;
   }
-
-  .login .text {
-    width: 90%;
+  .login-hero-text {
     top: 50%;
     transform: translate(-50%, -50%);
     padding: 0 15px;
   }
-
-  .login .text h1 {
+  .login-hero-text h1 {
     font-size: 1.8rem;
-    line-height: 1.3;
   }
-
-  .login .text h3 {
+  .login-hero-text h3 {
     font-size: 1rem;
-    margin-bottom: 8px;
-  }
-
-  .login .container {
-    padding: 0 15px;
-  }
-
-  .login form {
-    padding: 0.8rem;
-    gap: 0.8rem;
-  }
-
-  .login form input,
-  .login form button {
-    font-size: 0.9rem;
-    padding: 0.6rem 0.8rem;
   }
 }
 
-/* Extra small mobile devices */
 @media screen and (max-width: 320px) {
-  .login .backImg,
-  .login .backImg img {
+  .login-hero {
     height: 30vh;
     min-height: 180px;
   }
-
-  .login .text h1 {
+  .login-hero-text h1 {
     font-size: 1.5rem;
   }
-
-  .login .text h3 {
+  .login-hero-text h3 {
     font-size: 0.9rem;
-  }
-
-  .login .container {
-    padding: 0 10px;
   }
 }
 
-/* Large screens */
 @media screen and (min-width: 1200px) {
-  .login .backImg,
-  .login .backImg img {
+  .login-hero {
     height: 60vh;
   }
-
-  .login .text h1 {
+  .login-hero-text h1 {
     font-size: 3rem;
   }
-
-  .login .text h3 {
+  .login-hero-text h3 {
     font-size: 1.3rem;
   }
 }
