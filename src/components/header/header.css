@@ -4,6 +4,7 @@ header {
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
   position: relative;
   z-index: 44;
+  transition: background 0.3s;
 }
 /* nav */
 nav ul {
@@ -51,6 +52,9 @@ nav a:hover::after {
   margin-right: 20px;
 }
 .profile button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 17px;
   font-weight: 500;
   background-color: #fff;

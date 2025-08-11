@@ -8,6 +8,7 @@ import { RiImageAddLine } from "react-icons/ri";
 import { Context } from "../../context/Context";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { FaUserCircle } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 
 export const User = () => {
@@ -89,7 +90,9 @@ export const User = () => {
           </>
         ) : (
           <Link to="/login">
-            <button>My Account</button>
+            <button style={{display: "flex", alignItems: "center" , gap: "8px"}}>
+            <FaUserCircle size={20} />
+            My Account</button>
           </Link>
         )}
       </div>
