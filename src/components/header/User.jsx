@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 import { BsBagCheck } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -22,7 +22,22 @@ export const User = () => {
     });
   };
 
-  const [profileOpen, setProfileOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownTimeout = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeout.current) {
+      clearTimeout(dropdownTimeout.current);
+    }
+    setDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeout.current = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 150); // 150ms delay
+  };
+
   const close = () => {
     setProfileOpen(false);
   };
@@ -89,11 +104,36 @@ export const User = () => {
             )}
           </>
         ) : (
-          <Link to="/login">
-            <button style={{display: "flex", alignItems: "center" , gap: "8px"}}>
-            <FaUserCircle size={20} />
-            My Account</button>
-          </Link>
+          <div
+            className="profile account-dropdown"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            tabIndex={0}
+            onFocus={handleMouseEnter}
+            onBlur={handleMouseLeave}
+            style={{ position: "relative", display: "inline-block" }}
+          >
+            <button
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <FaUserCircle size={20} />
+              My Account
+            </button>
+            {dropdownOpen && (
+              <div className="account-dropdown-menu">
+                <Link to="/login" className="dropdown-link">
+                  Login
+                </Link>
+                <Link to="/register" className="dropdown-link">
+                  Register
+                </Link>
+              </div>
+            )}
+          </div>
         )}
       </div>
       <ToastContainer />
