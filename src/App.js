@@ -8,7 +8,7 @@ import { Login } from "./pages/login/Login";
 import { Regsiter } from "./pages/login/Regsiter";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { DetailsPages } from "./pages/details/DetailsPages";
-import { Account } from "./pages/account/Account";
+import Account from "./pages/account/Account"; // ✅ make sure this imports the updated Account
 import Settings from "./pages/account/Settings";
 import { Create } from "./components/create/Create";
 import { Context } from "./context/Context";
@@ -27,14 +27,14 @@ import Feedback from "./pages/feedback/Feedback.jsx";
 import CalmingCorner from "./pages/music/CalmingCorner.jsx"
 
 const App = () => {
-  //after login
   const { user } = useContext(Context);
+
   return (
     <>
       <Router>
         <Header />
         <GoogleTagManager />
-        <Routes>          
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Regsiter />} />
@@ -42,7 +42,7 @@ const App = () => {
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/blogs" element={<Blogpage />} />
           <Route path="/shelter" element={<Shelter />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/account" element={<Account />} /> {/* ✅ Updated Account route */}
           <Route path="/create" element={<Create />} />
           <Route path="/legal" element={<Legal/>} />
           <Route path="/gallery" element={<Gallery />} />
@@ -61,4 +61,5 @@ const App = () => {
     </>
   );
 };
+
 export default App;
