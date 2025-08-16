@@ -10,6 +10,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { DetailsPages } from "./pages/details/DetailsPages";
 import Account from "./pages/account/Account"; // ✅ make sure this imports the updated Account
 import Settings from "./pages/account/Settings";
+
+import { Account } from "./pages/account/Account";
+
 import { Create } from "./components/create/Create";
 import { Context } from "./context/Context";
 import { Jobs } from "./pages/jobs/jobs.jsx";
@@ -25,6 +28,7 @@ import NotFound from "./pages/notfound/page.jsx"
 import { GoToTopButton } from "./components/goToTopButton/goToTopButton.jsx";
 import Feedback from "./pages/feedback/Feedback.jsx";
 import CalmingCorner from "./pages/music/CalmingCorner.jsx"
+import ForgotPassword from './pages/login/ForgotPassword';
 
 const App = () => {
   const { user } = useContext(Context);
@@ -54,6 +58,7 @@ const App = () => {
           <Route path="*" element={<NotFound/>}/>
           <Route path="/music" element={<CalmingCorner/>} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
         <Footer />
         <GoToTopButton />
