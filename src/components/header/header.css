@@ -1,118 +1,128 @@
+
 header {
-  background: #ffa9cb;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
-  position: relative;
-  z-index: 44;
-}
-/* nav */
-nav ul {
-  display: flex;
-}
-nav a {
-  text-transform: capitalize;
-  margin-right: 30px;
-  color: #000;
-  position: relative;
-  padding: 5px;
-  transition: all 0.3s ease;
-}
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0%;
-  height: 2px;
-  background-color: #000;
-  transition: width 0.3s ease;
-}
-nav a:hover::after {
-  width: 100%;
-}
-
-/* Active link styling */
-.nav-link.active {
-  color: #000;
-  font-weight: bold;
-  border-bottom: 2px solid #000;
-}
-
-/* User */
-.profile {
-  margin-left: 30px;
-  cursor: pointer;
-}
-.profile .image {
-  display: flex;
-  padding-bottom: 20px;
-}
-.profile .image img {
-  margin-right: 20px;
-}
-.profile button {
-  font-size: 17px;
-  font-weight: 500;
-  background-color: #fff;
-  color: #000;
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-}
-.profile button:hover {
-  background-color: #eec7d6;
-}
-
-.profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.openProfile {
-  color: #000;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
-  position: absolute;
-  top: 80px;
-  right: 10px;
-  width: 250px;
-  background: #fff;
-}
-.openProfile .box {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-top: 10px;
-  padding: 5px;
-  transition: 0.5s;
-}
-.openProfile .icon {
-  font-size: 20px;
-  margin-right: 20px;
-}
-.openProfile h4 {
-  font-size: 15px;
-  font-weight: 500;
-}
-.openProfile button:hover {
-  background: rgba(147, 75, 255, 0.075);
-}
-header.active {
+  background: rgba(255, 255, 255, 0.1); /* Transparent */
+  backdrop-filter: blur(12px); /* Glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px 40px;
   position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
-  box-shadow: 0 0 4px 0 rgb(115 115 115 / 20%);
-  z-index: 9999;
-  background: #ffa9cb;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
 }
+
+/* Add slight shadow when scroll */
+header.active {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  background: rgba(30, 30, 50, 0.7);
+}
+
+/* =============================
+   FLEX CONTAINER
+   ============================= */
+.scontainer.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =============================
+   LOGO
+   ============================= */
+.logo img {
+  height: 55px;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.logo img:hover {
+  transform: rotate(-3deg) scale(1.1);
+  filter: drop-shadow(0 0 16px #00f7ff);
+}
+
+/* =============================
+   NAVIGATION
+   ============================= */
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+nav a {
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  letter-spacing: 0.5px;
+  padding: 6px 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Neon hover underline */
+nav a::before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #d41373, #35e1e7);
+  box-shadow: 0 0 10px #00f7ff;
+  transition: width 0.4s ease;
+  border-radius: 2px;
+}
+
+nav a:hover {
+  color: #ed0808c9;
+  transform: translateY(-2px);
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+/* Active link */
+.nav-link.active {
+  color: #ff007f;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(255, 0, 127, 0.8);
+}
+
+/* =============================
+   FUTURISTIC BUTTON
+   ============================= */
+.profile button {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  background: linear-gradient(90deg, #ff007f, #00f7ff);
+  color: rgb(232, 224, 224);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 12px rgba(0, 247, 255, 0.6);
+  background-size: 200% auto;
+}
+
+.profile button:hover {
+  background-position: right center; /* gradient shift */
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.7),
+              0 0 30px rgba(0, 247, 255, 0.6);
+}
+
+/* =============================
+   RESPONSIVE
+   ============================= */
 @media screen and (max-width: 768px) {
-  header .search {
-    display: none;
-  }
   nav {
     display: none;
+  }
+  .profile {
+    margin-left: auto;
   }
 }
