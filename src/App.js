@@ -27,6 +27,9 @@ import CalmingCorner from "./pages/music/CalmingCorner.jsx"
 import ForgotPassword from './pages/login/ForgotPassword';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DonationMap from "./components/DonationMap";
+import NGOSubmitForm from "./components/NGOSubmitForm";
+
 
 const App = () => {
   //after login
@@ -61,6 +64,15 @@ const App = () => {
         <Footer />
         <GoToTopButton />
       </Router>
+
+      <div>
+      <h1 className="text-2xl font-bold mb-4">Clothes & Essentials Donation Map</h1>
+      <DonationMap />
+      <div className="mt-6">
+        <NGOSubmitForm />
+      </div>
+    </div>
+    
       <ToastContainer position="top-center" autoClose={2000} className="toast-container-lower-zindex" />
     </>
   );
