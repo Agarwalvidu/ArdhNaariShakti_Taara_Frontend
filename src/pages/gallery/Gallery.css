@@ -2,54 +2,91 @@
   padding: 80px 5%;
   position: relative;
   z-index: 1;
+  background: linear-gradient(120deg, #f7e6fa 0%, #e9d8fd 100%);
 }
 
 .gallery-title {
   text-align: center;
   margin-bottom: 50px;
   font-size: 2.5rem;
-  color: purple;
-  font-weight: 600;
+  font-weight: 700;
   position: relative;
   z-index: 2;
+  text-shadow: 0 2px 12px rgba(128, 0, 128, 0.08);
+  background: linear-gradient(90deg, #a78bfa 0%, #c084fc 50%, #f472b6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.gallery-title::after {
+  content: "";
+  display: block;
+  margin: 16px auto 0 auto;
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #a78bfa 0%, #c084fc 100%);
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 36px;
   position: relative;
   z-index: 2;
 }
 
 .gallery-item {
-  background: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(120deg, #f7e6fa 0%, #e9d8fd 100%), rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 15px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 22px;
+  padding: 28px 22px 22px 22px;
+  box-shadow: 0 8px 32px rgba(128, 0, 128, 0.08), 0 2px 8px rgba(102, 126, 234, 0.07);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #e9d8fd;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s cubic-bezier(.4,0,.2,1), border-color 0.35s;
+}
+
+.gallery-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #a78bfa 0%, #c084fc 100%);
+  opacity: 0.13;
+  pointer-events: none;
 }
 
 .gallery-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transform: scale(1.06) rotate(-1deg);
+  box-shadow: 0 20px 48px rgba(128, 0, 128, 0.18), 0 6px 20px rgba(102, 126, 234, 0.13);
+  border-color: #a78bfa;
+}
+
+.gallery-item:hover::before {
+  opacity: 0.22;
 }
 
 .gallery-item img {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 10px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(128, 0, 128, 0.07);
 }
 
 .gallery-item p {
-  font-size: 15px;
-  color: #444;
+  font-size: 16px;
+  color: #6b21a8;
   font-weight: 500;
-  margin-top: 8px;
+  margin-top: 10px;
+  letter-spacing: 0.2px;
 }
 
 /* Responsive Design */
