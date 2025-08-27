@@ -6,7 +6,7 @@ import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md"
 import logo from "../../assets/images/logo.png"
 import "./footer.css"
 import { useNavigate, Link } from 'react-router-dom';
-
+import styled from "styled-components"
 function QuickLinks() {
   const navigate = useNavigate();
   const handleClick = (path) => {

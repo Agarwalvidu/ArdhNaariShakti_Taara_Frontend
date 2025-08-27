@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,createContext, useContext } from "react";
 import "./shelter.css";
 
 export const Shelter = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterBy, setFilterBy] = useState("state");
+ 
+ 
 
   const shelterData = [
     {

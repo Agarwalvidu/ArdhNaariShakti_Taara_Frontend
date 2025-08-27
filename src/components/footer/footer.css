@@ -1,9 +1,43 @@
+/* footer.css */
+:root {
+  /* Light theme (default) - Pink version */
+  --footer-bg: linear-gradient(135deg, #ffb6c1 0%, #ffc6d0 100%);
+  --footer-text: #4a1e29;
+  --footer-link: #7a2f40;
+  --footer-link-hover: #5a1726;
+  --footer-border: rgba(255, 255, 255, 0.4);
+  --footer-icon: #d81b60;
+  --footer-highlight: linear-gradient(90deg, #ff4081, #ec407a);
+  --footer-social-bg: rgba(255, 255, 255, 0.3);
+  --footer-social-border: rgba(255, 255, 255, 0.4);
+  --footer-contact-bg: rgba(255, 255, 255, 0.25);
+  --footer-contact-border: rgba(255, 255, 255, 0.3);
+  --footer-logo-color: #8a2e3f;
+}
+
+.dark {
+  /* Dark theme */
+  --footer-bg: #111111;
+  --footer-text: #e0e0e0;
+  --footer-link: #a0aec0;
+  --footer-link-hover: #ffffff;
+  --footer-border: rgba(255, 255, 255, 0.1);
+  --footer-icon: #bb86fc;
+  --footer-highlight: linear-gradient(90deg, #bb86fc, #985eff);
+  --footer-social-bg: rgba(255, 255, 255, 0.1);
+  --footer-social-border: rgba(255, 255, 255, 0.1);
+  --footer-contact-bg: rgba(255, 255, 255, 0.05);
+  --footer-contact-border: rgba(255, 255, 255, 0.1);
+  --footer-logo-color: #ffffff;
+}
+
 .footer {
-  background: linear-gradient(135deg, #ffa9cb 0%, #ff8ab4 100%);
-  color: #2d3748;
+  background: var(--footer-bg);
+  color: var(--footer-text);
   margin-top: 4rem;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .footer::before {
@@ -34,7 +68,7 @@
 }
 
 .footer-section h4 {
-  color: #1a202c;
+  color: var(--footer-text);
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -48,7 +82,7 @@
   left: 0;
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: var(--footer-highlight);
   border-radius: 2px;
 }
 
@@ -69,12 +103,12 @@
 .footer-logo h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1a202c;
+  color: var(--footer-logo-color);
   margin: 0;
 }
 
 .footer-description {
-  color: #4a5568;
+  color: var(--footer-link);
   line-height: 1.6;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
@@ -92,19 +126,19 @@
   justify-content: center;
   width: 45px;
   height: 45px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--footer-social-bg);
   border-radius: 12px;
-  color: #2d3748;
+  color: var(--footer-icon);
   text-decoration: none;
   font-size: 1.25rem;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--footer-social-border);
   backdrop-filter: blur(10px);
 }
 
 .social-link:hover {
-  background: rgba(255, 255, 255, 0.3);
-  color: #1a202c;
+  background: var(--footer-icon);
+  color: white;
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
@@ -118,19 +152,28 @@
 
 .footer-links li {
   margin-bottom: 0.75rem;
+  color: var(--footer-link);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-links li:hover {
+  color: var(--footer-link-hover);
+  transform: translateX(5px);
 }
 
 .footer-links a {
-  color: #4a5568;
+  color: var(--footer-link);
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
   padding: 0.25rem 0;
+  display: block;
 }
 
 .footer-links a:hover {
-  color: #1a202c;
+  color: var(--footer-link-hover);
   transform: translateX(5px);
 }
 
@@ -141,7 +184,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: var(--footer-highlight);
   transition: width 0.3s ease;
 }
 
@@ -161,10 +204,10 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--footer-contact-bg);
   border-radius: 8px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--footer-contact-border);
   transition: all 0.3s ease;
 }
 
@@ -175,19 +218,19 @@
 
 .contact-icon {
   font-size: 1.25rem;
-  color: #667eea;
+  color: var(--footer-icon);
   flex-shrink: 0;
 }
 
 .contact-item span {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #2d3748;
+  color: var(--footer-text);
 }
 
 /* Footer Bottom */
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid var(--footer-border);
   padding-top: 1.5rem;
   margin-top: 2rem;
 }
@@ -203,7 +246,7 @@
 .footer-bottom-content p {
   margin: 0;
   font-size: 0.9rem;
-  color: #4a5568;
+  color: var(--footer-link);
   font-weight: 500;
 }
 
@@ -261,4 +304,4 @@
     left: 50%;
     transform: translateX(-50%);
   }
-} 
+}

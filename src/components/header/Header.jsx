@@ -7,8 +7,18 @@ import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
+import styled from "styled-components";
+import { useTheme } from "styled-components";
 
-export const Header = () => {
+
+const HeaderWrapper = styled.header`
+  background: ${({ theme }) => theme.headerBg};
+  color: ${({ theme }) => theme.text};
+  padding: 1rem;
+  transition: all 0.3s ease;
+`;
+
+export const Header = ({ toggleTheme, theme }) => {
 
    const showAnimation = {
     hidden: {
@@ -82,6 +92,9 @@ export const Header = () => {
   };
 
   return (
+    <HeaderWrapper>
+
+    
     <header className="header">
       <div className="scontainer flex space-between">
         
@@ -92,7 +105,20 @@ export const Header = () => {
           </Link>
           <h1 className="project-title">ArdhNaariShakti Taara</h1>
         </div>
-
+         <button 
+        onClick={toggleTheme} 
+        style={{
+          marginLeft: "1rem",
+          padding: "0.5rem 1rem",
+          borderRadius: "8px",
+          border: "none",
+          cursor: "pointer",
+          background: theme === "light" ? "#222" : "#fff",
+          color: theme === "light" ? "#fff" : "#222"
+        }}
+      >
+        {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+      </button>
         {/* Hamburger Icon */}
         <motion.div animate={{
             transition: {
@@ -251,5 +277,6 @@ export const Header = () => {
         </div>
       </div>
     </header>
+  </HeaderWrapper>
   );
 };

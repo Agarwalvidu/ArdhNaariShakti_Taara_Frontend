@@ -1,9 +1,59 @@
+/* header.css */
+:root {
+  /* Light theme (default) - Pink header */
+  --header-bg: #ffa9cb;
+  --header-text: #000000;
+  --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --header-link: #000000;
+  --header-link-hover: #ffffff;
+  --header-link-underline: #000000;
+  --header-button-bg: #ffffff;
+  --header-button-text: #000000;
+  --header-button-hover: #eec7d6;
+  --header-dropdown-bg: #ffffff;
+  --header-dropdown-border: #dddddd;
+  --header-dropdown-text: #000000;
+  --header-dropdown-hover: #f6f6f6;
+  --header-profile-bg: #ffffff;
+  --header-profile-border: #e9e9e9;
+  --header-profile-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  --header-profile-hover: #fafafa;
+  --header-mobile-nav-bg: rgba(255, 255, 255, 0.9);
+  --header-mobile-nav-border: #000000;
+  --header-gradient: linear-gradient(90deg, #f62aa8, #1c90f6);
+}
+
+.dark {
+  /* Dark theme - Dark header */
+  --header-bg: #1a1a1a;
+  --header-text: #ffffff;
+  --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --header-link: #ffffff;
+  --header-link-hover: #bb86fc;
+  --header-link-underline: #bb86fc;
+  --header-button-bg: #2d2d2d;
+  --header-button-text: #ffffff;
+  --header-button-hover: #3d3d3d;
+  --header-dropdown-bg: #2d2d2d;
+  --header-dropdown-border: #444444;
+  --header-dropdown-text: #ffffff;
+  --header-dropdown-hover: #3d3d3d;
+  --header-profile-bg: #2d2d2d;
+  --header-profile-border: #444444;
+  --header-profile-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  --header-profile-hover: #3d3d3d;
+  --header-mobile-nav-bg: rgba(42, 42, 42, 0.95);
+  --header-mobile-nav-border: #666666;
+  --header-gradient: linear-gradient(90deg, #bb86fc, #03dac6);
+}
+
 header {
-  background: #ffa9cb;
+  background: var(--header-bg);
   padding: 15px 20px;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+  box-shadow: var(--header-shadow);
   position: relative;
-  z-index: 9999; 
+  z-index: 9999;
+  transition: all 0.3s ease;
 }
 
 .scontainer.flex.space-between {
@@ -26,9 +76,10 @@ header {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.2px;
-  background: linear-gradient(90deg, #f62aa8, #1c90f6);
+  background: var(--header-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
 }
 
 .nav-menu ul {
@@ -36,15 +87,13 @@ header {
   width: 100%;
 }
 
-
 .nav-link {
   text-transform: capitalize;
-  color: #000;
+  color: var(--header-link);
   position: relative;
   padding: 10px;
   margin: 20px;
   transition: all 0.3s ease;
-
 }
 
 .nav-link::after {
@@ -54,7 +103,7 @@ header {
   bottom: -2px;
   width: 0%;
   height: 2px;
-  background-color: #000;
+  background-color: var(--header-link-underline);
   transition: width 0.3s ease;
 }
 
@@ -64,7 +113,7 @@ header {
 
 .nav-link.active {
   font-weight: bold;
-  color: white;
+  color: var(--header-link-hover);
 }
 
 /* Mobile menu icon */
@@ -72,8 +121,9 @@ header {
   display: none;
   font-size: 1.8rem;
   cursor: pointer;
-  color: #fff;
-  z-index: 10001; /* Ensure it's above the navigation menu */
+  color: var(--header-text);
+  z-index: 10001;
+  transition: color 0.3s ease;
 }
 
 /* Navbar Buttons */
@@ -81,23 +131,23 @@ header {
 .mobile-account button {
   font-size: 17px;
   font-weight: 500;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--header-button-bg);
+  color: var(--header-button-text);
   padding: 8px 16px;
   border-radius: 8px;
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .account button:hover,
 .mobile-account button:hover {
-  background-color: #eec7d6;
+  background-color: var(--header-button-hover);
 }
 
 /* Navbar Avatar */
 .account {
-  position: relative; 
+  position: relative;
 }
 
 .account img,
@@ -107,39 +157,40 @@ header {
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
-
 
 .account-dropdown {
   position: absolute;
-  top: 50px;  /* just below avatar */
+  top: 50px;
   right: 0;
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--header-dropdown-bg);
+  border: 1px solid var(--header-dropdown-border);
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   min-width: 160px;
   display: flex;
   flex-direction: column;
   padding: 8px 0;
   z-index: 9990;
+  transition: all 0.3s ease;
 }
 
 .account-dropdown a {
   padding: 10px 15px;
-  color: #000;
+  color: var(--header-dropdown-text);
   text-decoration: none;
   font-size: 15px;
   transition: background 0.3s;
 }
 
 .account-dropdown a:hover {
-  background: #f6f6f6;
+  background: var(--header-dropdown-hover);
 }
 
-.account, .profile { 
-  position: relative; 
-  flex: 0 0 auto; 
+.account, .profile {
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .profile img {
@@ -150,20 +201,20 @@ header {
   display: block;
 }
 
-
 .openProfile {
   position: absolute;
-  top: 48px;          
+  top: 48px;
   right: 0;
-  background: #fff;
+  background: var(--header-profile-bg);
   min-width: 200px;
-  border: 1px solid #e9e9e9;
+  border: 1px solid var(--header-profile-border);
   border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  box-shadow: var(--header-profile-shadow);
   z-index: 9990;
   display: flex;
-  flex-direction: column;   
+  flex-direction: column;
   padding: 8px 0;
+  transition: all 0.3s ease;
 }
 
 .openProfile .box {
@@ -172,20 +223,24 @@ header {
   gap: 12px;
   padding: 10px 14px;
   cursor: pointer;
+  color: var(--header-dropdown-text);
 }
 
 .openProfile .box + .box {
-  border-top: 1px solid #f3f3f3;
+  border-top: 1px solid var(--header-dropdown-border);
 }
 
 .openProfile .box:hover {
-  background: #fafafa;
+  background: var(--header-profile-hover);
 }
 
+.scontainer.flex.space-between {
+  align-items: center;
+}
 
-.scontainer.flex.space-between { align-items: center; }
-.nav-menu ul { align-items: center; }
-
+.nav-menu ul {
+  align-items: center;
+}
 
 .account-dropdown.hidden {
   display: none;
@@ -204,9 +259,9 @@ header.active {
   top: 0;
   left: 0;
   width: 100%;
-  box-shadow: 0 0 4px 0 rgb(115 115 115 / 20%);
+  box-shadow: 0 0 4px 0 rgba(115, 115, 115, 0.2);
   z-index: 9999;
-  background: #ffa9cb;
+  background: var(--header-bg);
 }
 
 @media screen and (max-width: 768px) {
@@ -229,23 +284,21 @@ header.active {
     top: 70px;
     right: 0;
     z-index: 1000;
-    background: transparent !important;
+    background: var(--header-mobile-nav-bg) !important;
     backdrop-filter: blur(50px);
     width: 100%;
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 10000; 
+    z-index: 10000;
   }
 
   .nav-menu.active {
     display: block;
-    
   }
 
-  /* Ensure nav-menu is hidden when profile drawer is active */
   .nav-menu.active.profile-drawer-active {
-    display: none; 
-    pointer-events: none; /* Prevent clicks on underlying menu */
+    display: none;
+    pointer-events: none;
   }
 
   .nav-menu ul {
@@ -253,7 +306,6 @@ header.active {
     gap: 0;
     text-align: center;
     margin-top: 40px;
-    
   }
 
   .desktop-account {
@@ -265,40 +317,39 @@ header.active {
     text-align: center;
     margin-top: 30px !important;
     position: relative;
-    width: 100%; /* Ensure mobile account takes full width */
+    width: 100%;
   }
 
   .mobile-account-profile-only {
-    display: flex; /* Use flexbox to center content */
+    display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 0; /* Remove default padding from li */
+    padding: 0;
   }
 
   .account-dropdown {
-    right: 50%; 
-    transform: translateX(50%); 
+    right: 50%;
+    transform: translateX(50%);
   }
-  .sli{
+  
+  .sli {
     width: 100%;
-    border-bottom: 1px solid #000;
-    border-right: 5px solid #000;
+    border-bottom: 1px solid var(--header-mobile-nav-border);
+    border-right: 5px solid var(--header-mobile-nav-border);
     border-radius: 8px;
     text-align: left;
     font-size: large;
     padding: 16px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    color: #fff !important;
-    }
+    color: var(--header-text) !important;
+  }
 }
 
-
 .profile {
-  position: relative; 
+  position: relative;
   display: inline-block;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .profile .img img {
@@ -309,20 +360,18 @@ header.active {
   cursor: pointer;
 }
 
-
 .openProfile {
   position: absolute;
-  top: 48px;          
-  right: 0;          
-  left: auto;        
-  background: #fff;
+  top: 48px;
+  right: 0;
+  left: auto;
+  background: var(--header-profile-bg);
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--header-profile-shadow);
   min-width: 100px;
   padding: 10px 0;
   z-index: 9990;
 }
-
 
 .openProfile .box {
   display: flex;
@@ -334,17 +383,18 @@ header.active {
   background: none;
   text-align: left;
   cursor: pointer;
+  color: var(--header-dropdown-text);
 }
 
 .openProfile .image {
   display: flex;
-  align-items: center;   
-  gap: 10px;             
+  align-items: center;
+  gap: 10px;
   padding: 10px 15px;
 }
 
 .openProfile .image .img img {
-  width: 40px;   
+  width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
@@ -360,14 +410,17 @@ header.active {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
+  color: var(--header-dropdown-text);
 }
 
 .openProfile .image .text label {
   font-size: 13px;
-  color: #555;
+  color: var(--header-dropdown-text);
+  opacity: 0.7;
 }
+
 .openProfile .box:hover {
-  background: #f9f9f9;
+  background: var(--header-profile-hover);
 }
 
 .toast-container-lower-zindex {
@@ -376,10 +429,10 @@ header.active {
 
 @media screen and (max-width: 768px) {
   .openProfile {
-    background: #fff;
-    border: 1px solid #ddd;
+    background: var(--header-dropdown-bg);
+    border: 1px solid var(--header-dropdown-border);
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     padding: 10px 0;
     display: flex;
     flex-direction: column;
@@ -401,11 +454,11 @@ header.active {
   .mobile-account {
     margin-top: 10px;
     margin-bottom: 20px;
-  }  
+  }
 }
 
 .closeProfileMenu {
-  display: none; 
+  display: none;
 }
 
 /* New styles for the full-screen sliding drawer */
@@ -413,45 +466,46 @@ header.active {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%; /* Adjust as needed, e.g., 80% for a partial slide */
+  width: 100%;
   height: 100vh;
-  background-color: #ffa9cb; /* Match header background */
-  transform: translateX(100%); /* Start off-screen to the right */
-  transition: transform 0.3s ease-out; /* Smooth sliding animation */
-  z-index: 99999; /* Ensure it's above everything else */
+  background-color: var(--header-bg);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  z-index: 99999;
   display: flex;
   flex-direction: column;
-  padding: 20px; /* Add some padding inside the drawer */
+  padding: 20px;
   box-sizing: border-box;
 }
 
 .profile-drawer.active {
-  transform: translateX(0); /* Slide into view */
+  transform: translateX(0);
 }
 
-/* Adjustments for .openProfile within the drawer */
 .profile-drawer .openProfile {
-  position: relative; /* Reset position for flow within drawer */
+  position: relative;
   top: auto;
   right: auto;
   left: auto;
-  margin: 20px auto; /* Center within drawer */
-  max-width: 300px; /* Max width for content */
+  margin: 20px auto;
+  max-width: 300px;
   width: 100%;
-  background: #fff; /* Ensure it has its own background */
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  background: var(--header-dropdown-bg);
+  border: 1px solid var(--header-dropdown-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   padding: 10px 0;
 }
 
 .profile-drawer .closeProfileMenu {
-  display: block; /* Show the close button for the drawer */
+  display: block;
   position: absolute;
   top: 10px;
-  left: 10px; /* Position it top-left within the drawer */
+  left: 10px;
   font-size: 1.5rem;
-  color: #000;
+  color: var(--header-text);
   z-index: 10;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
-

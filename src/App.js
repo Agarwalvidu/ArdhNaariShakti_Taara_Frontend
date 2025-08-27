@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext ,useState,useEffect } from "react";
 import { Legal } from "./pages/legal/legal.jsx"
 import { Footer } from "./components/footer/Footer";
 import { GoogleTagManager } from "./components/tagmanager/tagmanager";
@@ -28,15 +28,46 @@ import ForgotPassword from './pages/login/ForgotPassword';
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./components/globalStyle.js";
+import { lightTheme, darkTheme } from "./theme";
 const App = () => {
   //after login
   const { user } = useContext(Context);
+  const [theme, setTheme] = useState("light");
+
+ // In your App.js toggleTheme function
+const toggleTheme = () => {
+  const newTheme = theme === "light" ? "dark" : "light";
+  setTheme(newTheme);
+  
+  // Add or remove the 'dark' class from body
+  if (newTheme === "dark") {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
+  
+  localStorage.setItem('theme', newTheme);
+};
+
+// And in your useEffect for initial theme setup
+useEffect(() => {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  setTheme(savedTheme);
+  
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
+}, []);
   return (
-    <>
+    <ThemeProvider  theme={theme === "light" ? lightTheme : darkTheme}>
       <Router>
         <ScrollToTop />
-        <Header />
+         <GlobalStyle />
+        <Header toggleTheme={toggleTheme} theme={theme} />
         <GoogleTagManager />
         <Routes>          
           <Route path="/" element={<Home />} />
@@ -64,7 +95,7 @@ const App = () => {
         <GoToTopButton />
       </Router>
       <ToastContainer position="top-center" autoClose={2000} className="toast-container-lower-zindex" />
-    </>
+    </ThemeProvider>
   );
 };
 export default App;
