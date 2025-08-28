@@ -4,18 +4,22 @@ import "./legal.css";
 export const Legal = () => {
   return (
     <div className="legal-page">
-      {/* Header Section */}
-      <div className="legal-header">
-        <h1 >Know Your Legal Rights</h1>
-        <h3><b>Knowing your legal rights empowers you to live with dignity, walk with confidence, and embrace life without fear.</b></h3>
-        <br></br>
-        <p>
-          Legal awareness is not just about laws—it's about empowerment, protection, and freedom. 
-          For the transgender community, understanding your rights can be the difference between silence and strength, 
-          between discrimination and justice. This section will guide you through the legal protections available, 
-          landmark judgments, and steps you can take if your rights are violated.
+      {/* <header className="legal-hero"> */}
+        {/* Main Page Title */}
+        <h1 className="legal-title" >Know Your Legal Rights</h1>
+        {/* <p className="legal-sub">
+          Knowing your legal rights empowers you to live with dignity, walk with
+          confidence, and embrace life without fear.
+        </p> */}
+        <p className="legal-intro">
+          Legal awareness is not just about laws—it's about empowerment,
+          protection, and freedom.<br></br>
+          For the transgender community, understanding
+          your rights can be the difference between silence and strength.<br></br> This section will guide you
+          through the legal protections available, landmark judgments, and steps
+          you can take if your rights are violated.
         </p>
-      </div>
+      {/* </header> */}
 
       <div className="legal-section" id="Discrimination">
 <h1>THE TRANSGENDER PERSONS (PROTECTION OF RIGHTS) ACT, 2019

@@ -134,8 +134,8 @@
 }
 
 .footer-links a:hover {
-  color: #1a202c;
-  transform: translateX(5px);
+  color: inherit;
+  /* transform: translateX(5px); */
 }
 
 .footer-links a::before {
@@ -150,7 +150,7 @@
 }
 
 .footer-links a:hover::before {
-  width: 100%;
+  width: 0;
 }
 
 /* /*Contact Info  */
@@ -182,10 +182,9 @@
 
 }
 
-.item:hover {
+/* .item:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: translateX(5px);
-}
+  /* transform: translateX(5px); */ */
 
 .contact-icon {
   font-size: 1.25rem;

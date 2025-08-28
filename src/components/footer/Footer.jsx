@@ -80,16 +80,23 @@ export const Footer = () => {
             <div className="info">
               <div className="item">
                 <MdEmail className="contact-icon" />
-                <span>hello@taara.org</span>
+                <a href="mailto:hello@taara.org">hello@taara.org</a>
               </div>
               <div className="item">
                 <MdPhone className="contact-icon" />
-                <span>+1 (555) 123-4567</span>
+                <a href="tel:+15551234567">+1 (555) 123-4567</a>
               </div>
-              <div className="item">
-                <MdLocationOn className="contact-icon" />
-                <span>123 Innovation Street, Tech City, TC 12345</span>
-              </div>
+               <div className="item">
+      <MdLocationOn className="contact-icon" />
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=123+Innovation+Street,+Tech+City,+TC+12345"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        123 Innovation Street, Tech City, TC 12345
+      </a>
+
+            </div>
             </div>
           </div>
         </div>
