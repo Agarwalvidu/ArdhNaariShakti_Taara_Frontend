@@ -48,10 +48,10 @@ export const Regsiter = () => {
 
   return (
     <>
-      <section className="login-container">
+      {/* <section className="login-container">
         <div className="login-image-container">
           <img src={back} alt="Decorative background" />
-        </div>
+        </div> */}
 
         <div className="login-form-container">
           <form className="login-form" onSubmit={handleSubmit}>
@@ -111,7 +111,7 @@ export const Regsiter = () => {
           {error && <span style={{ color: "red" }}>Something went wrong</span>}
         </div>
         
-      </section>
+      {/* </section> */}
     </>
   );
 };

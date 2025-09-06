@@ -49,10 +49,10 @@ export const Login = () => {
 
   return (
     <>
-      <section className="login-container">
+     {/* <section className="login-container">
         <div className="login-image-container">
           <img src={back} alt="Decorative background" />
-        </div>
+        </div>  */}
 
         <div className="login-form-container">
           <form className="login-form" onSubmit={handleSubmit}>
@@ -92,7 +92,7 @@ export const Login = () => {
             </div>
 
             <p className="forgot-password-link">
-              <Link to="/forgot-password">Forgot Password?</Link>
+              <Link to="/forgot-password" style={{color: "#135cabff"}}>Forgot Password?</Link>
             </p>
 
             {error && <p className="error-message">{error}</p>}
@@ -107,7 +107,7 @@ export const Login = () => {
           </form>
         </div>
         
-      </section>
+      {/* </section> */}
     </>
   );
 };

@@ -52,6 +52,7 @@
   align-items: center;
   padding: 2rem;
   background-color: transparent;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .login-form {
@@ -86,7 +87,7 @@
   display: block;
   margin-bottom: 0.2rem;
   font-weight: bold;
-  color: rgb(30, 29, 29);
+  color: rgba(4, 31, 129, 0.85);
   font-size: 0.9rem;
 }
 
@@ -94,10 +95,23 @@
   width: 100%;
   padding: 0.75rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 12px;
   font-size: 1rem;
   background-color: rgb(228, 245, 249);
   ;
+}
+
+.form-group input:focus {
+  border: 2px solid #6a5acd; 
+  outline: none;
+  box-shadow: 0 0 6px rgba(106, 90, 205, 0.6);
+}
+
+.forgot-password-link { 
+  margin-bottom: 2px;
+}
+.forgot-password-link Link {
+  color: #2678d0;
 }
 
 .button {
@@ -108,7 +122,7 @@
   color: white;
   font-size: 1.1rem;
   font-weight: bold;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
 }
 
