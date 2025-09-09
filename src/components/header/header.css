@@ -36,6 +36,7 @@ header {
   letter-spacing: 0.2px;
   background: linear-gradient(90deg, #f62aa8, #1c90f6);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -198,7 +199,11 @@ header {
 }
 
 .desktop-account {
-  display: block;
+  display: inline-flex; /* Ensure horizontal alignment */
+  align-items: center;
+  margin-left: 0; /* Remove extra spacing */
+  padding-left: 0; /* Remove padding */
+  position: static; /* Reset positioning */
 }
 
 .mobile-account {
@@ -213,6 +218,8 @@ header.active {
   box-shadow: 0 0 4px 0 rgb(115 115 115 / 20%);
   z-index: 9999;
   background: #ffa9cb;
+  display: flex;
+  align-items: center; /* Align contents vertically */
 }
 
 @media screen and (max-width: 768px) {
