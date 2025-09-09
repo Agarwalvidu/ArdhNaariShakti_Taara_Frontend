@@ -246,7 +246,8 @@ export const Header = () => {
           </div>
         )}
 
-        <div className="account flexCenter desktop-account">
+        {/* My Account Button */}
+        <div className="account flexCenter desktop-account" style={{ marginLeft: "auto" }}>
           <User closeMobileMenu={closeMenu} isMobile={isMobileView} />
         </div>
       </div>
