@@ -48,7 +48,7 @@ export const Footer = () => {
                 <RiInstagramFill />
               </a>
               <a href="https://x.com/Vidushit143?t=QhDahpmDpE9ZuLXw0MujSA&s=08" className="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
-                <FaXTwitter />
+                <FaXTwitter/>
               </a>
               <a href="https://www.linkedin.com/in/vidushi-agarwal-8958-developer?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
 " className="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
