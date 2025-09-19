@@ -18,7 +18,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* keep everything on one row to avoid misaligned account button */
+}
+
+/* Prevent wrapping to keep account button aligned */
+.header .scontainer {
+  flex-wrap: nowrap;
+  gap: 12px;
 }
 
 /* Logo + Title */
@@ -26,6 +32,7 @@ header {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 0 0 auto;
 }
 
 .project-title {
@@ -39,18 +46,34 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
+/* Let nav occupy remaining space without pushing account to next line */
+.nav-menu {
+  flex: 1 1 auto;
+  display: flex;
+}
+
 .nav-menu ul {
   display: flex;
-  width: 100%;
+  width: auto; /* don't force full width, prevents overflow that misaligns account button */
+  align-items: center;
+  gap: 6px; /* slightly tighter spacing */
 }
 
 .nav-link {
   text-transform: capitalize;
   color: #000;
   position: relative;
-  padding: 10px;
-  margin: 20px;
+  padding: 10px 12px;
+  margin: 10px 12px; /* reduced spacing to declutter */
   transition: all 0.3s ease;
+}
+
+/* Slightly tighter spacing on medium screens for decluttering */
+@media screen and (max-width: 1100px) {
+  .nav-link {
+    margin: 8px 8px;
+    padding: 8px 10px;
+  }
 }
 
 .nav-link::after {
@@ -72,6 +95,30 @@ header {
   font-weight: bold;
   color: white;
 }
+
+/* More dropdown (desktop) */
+.more { position: relative; }
+.more-btn {
+  background: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.more-menu {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  min-width: 180px;
+  padding: 6px 0;
+  z-index: 9990;
+}
+.more-menu li { list-style: none; }
+.more-menu .nav-link { margin: 0; padding: 10px 14px; display: block; }
 
 /* Mobile menu icon */
 .menu-icon {
@@ -104,6 +151,9 @@ header {
 /* Navbar Avatar */
 .account {
   position: relative; 
+  display: flex;
+  align-items: center; /* ensure vertical alignment of button/avatar */
+  flex: 0 0 auto;
 }
 
 .account img,
@@ -199,6 +249,7 @@ header {
 
 .desktop-account {
   display: block;
+  align-self: center; /* keep aligned vertically */
 }
 
 .mobile-account {
@@ -459,5 +510,162 @@ header.active {
   font-size: 1.5rem;
   color: #000;
   z-index: 10;
+}
+
+
+/* ===== Enhanced Header (best-in-class look) ===== */
+.header {
+  background: rgba(255, 169, 203, 0.86);
+  -webkit-backdrop-filter: saturate(120%) blur(10px);
+  backdrop-filter: saturate(120%) blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.header .scontainer {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 12px;
+  gap: 10px;
+}
+
+/* Subtle elevation on scroll */
+header.active {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 169, 203, 0.78);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  backdrop-filter: saturate(140%) blur(14px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+/* Tighter, elegant spacing for nav */
+.nav-menu ul {
+  gap: 2px;
+}
+
+/* Modern link appearance */
+.nav-link {
+  color: #171717;
+  font-weight: 500;
+  margin: 0 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  position: relative;
+  transition: color .25s ease, transform .18s ease, box-shadow .25s ease, background .25s ease;
+}
+
+/* Animated underline */
+.nav-link::after {
+  bottom: 6px;
+  height: 2px;
+  background: linear-gradient(90deg, #f62aa8 0%, #1c90f6 100%);
+}
+
+.nav-link:hover {
+  color: #0a0a0a;
+}
+
+/* Active state pill */
+.nav-link.active {
+  color: #0a0a0a;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+}
+
+/* CTA style (e.g., Taarabot) */
+.nav-link.cta {
+  background: linear-gradient(90deg, #ff5ac4 0%, #5aa8ff 100%);
+  color: #fff !important;
+  border: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(246, 42, 168, .25);
+}
+.nav-link.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(28, 144, 246, .28);
+}
+
+/* More dropdown refinement */
+.more { position: relative; }
+.more-btn {
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.8);
+  padding: 8px 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  transition: box-shadow .25s ease, transform .18s ease;
+}
+.more.open .more-btn { box-shadow: 0 8px 20px rgba(0,0,0,.10); }
+.more-btn:hover { transform: translateY(-1px); }
+
+.more-menu {
+  transform: translateY(6px);
+  opacity: 1;
+  animation: dropdownIn .18s ease-out;
+}
+.more-menu::before {
+  content: "";
+  position: absolute;
+  top: -7px; left: 22px;
+  width: 12px; height: 12px;
+  background: #fff;
+  border-left: 1px solid #e9e9e9;
+  border-top: 1px solid #e9e9e9;
+  transform: rotate(45deg);
+}
+
+@keyframes dropdownIn {
+  from { transform: translateY(2px); opacity: 0; }
+  to { transform: translateY(6px); opacity: 1; }
+}
+
+/* Account button polish */
+.account button,
+.mobile-account button {
+  background: #fff;
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+}
+
+/* Menu icon contrast - mobile only */
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    color: #222;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.8);
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+  }
+}
+
+/* Ensure hamburger never shows on desktop */
+@media screen and (min-width: 769px) {
+  .menu-icon { display: none !important; }
+}
+
+/* Focus visibility for accessibility */
+.nav-link:focus-visible,
+.more-btn:focus-visible,
+.account button:focus-visible {
+  outline: 3px solid rgba(28, 144, 246, .55);
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link, .more-btn, .account button { transition: none !important; }
+  .more-menu { animation: none !important; }
+}
+
+/* Responsive refinement */
+@media (max-width: 1100px) {
+  .project-title { font-size: 26px !important; }
+}
+@media (max-width: 768px) {
+  .menu-icon { background: transparent; border: none; }
 }
 
