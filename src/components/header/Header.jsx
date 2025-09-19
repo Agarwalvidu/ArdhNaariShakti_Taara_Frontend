@@ -29,6 +29,7 @@ export const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false); // New state for profile menu
+  const [moreOpen, setMoreOpen] = useState(false); // Desktop "More" dropdown
   const [showProfileOnly, setShowProfileOnly] = useState(false); // New state for profile-only view
   const navRef = useRef();
 
@@ -54,21 +55,33 @@ export const Header = () => {
     };
 
     const handleClickOutside = (event) => {
-      if (navRef.current && !navRef.current.contains(event.target) && (menuOpen || profileOpen || showProfileOnly)) {
+      if (navRef.current && !navRef.current.contains(event.target) && (menuOpen || profileOpen || showProfileOnly || moreOpen)) {
         setMenuOpen(false);
         setProfileOpen(false);
         setShowProfileOnly(false);
+        setMoreOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        setProfileOpen(false);
+        setShowProfileOnly(false);
+        setMoreOpen(false);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [menuOpen, profileOpen, showProfileOnly]);
+  }, [menuOpen, profileOpen, showProfileOnly, moreOpen]);
 
   const closeMenu = () => { 
     setMenuOpen(false); 
@@ -80,6 +93,10 @@ export const Header = () => {
     setShowProfileOnly(!showProfileOnly);
     setMenuOpen(false); // Ensure main menu is closed when opening profile drawer
   };
+
+  // Split links for desktop to declutter: keep primary, overflow under "More"
+  const primaryDesktopLinks = nav.slice(0, 6);
+  const overflowDesktopLinks = nav.slice(6);
 
   return (
     <header className="header">
@@ -191,9 +208,9 @@ export const Header = () => {
               className={menuOpen ? "nav-menu active" : "nav-menu"}
             >
               <AnimatePresence>
-                <motion.ul>
+                <motion.ul onMouseLeave={() => setMoreOpen(false)} role="menubar" aria-label="Primary">
                   <AnimatePresence>
-                    {nav.map((link) => (
+                    {primaryDesktopLinks.map((link) => (
                       <motion.li
                       className=""
                         initial={{ scale: 0, opacity: 0 }}
@@ -209,7 +226,7 @@ export const Header = () => {
                         {link.text === "taarabot" ? (
                           <a
                             href={link.url}
-                            className="nav-link"
+                            className="nav-link cta"
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={closeMenu}
@@ -230,6 +247,63 @@ export const Header = () => {
                       </motion.li>
                     ))}
                   </AnimatePresence>
+                  {overflowDesktopLinks.length > 0 && (
+                    <li
+                      className={`more ${moreOpen ? 'open' : ''}`}
+                      onMouseEnter={() => setMoreOpen(true)}
+                    >
+                      <button
+                        className="more-btn"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded={moreOpen}
+                        onClick={() => setMoreOpen((v) => !v)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'ArrowDown') {
+                            setMoreOpen(true);
+                            const first = e.currentTarget.nextSibling?.querySelector('a,button,[tabindex="0"]');
+                            if (first) {
+                              e.preventDefault();
+                              first.focus();
+                            }
+                          }
+                        }}
+                      >
+                        More
+                      </button>
+                      {moreOpen && (
+                        <ul className="more-menu" role="menu" aria-label="More">
+                          {overflowDesktopLinks.map((link) => (
+                            <li key={link.id} role="none">
+                              {link.text === "taarabot" ? (
+                                <a
+                                  href={link.url}
+                                  className="nav-link cta"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={closeMenu}
+                                  role="menuitem"
+                                >
+                                  {link.text}
+                                </a>
+                              ) : (
+                                <NavLink
+                                  to={link.url}
+                                  className={({ isActive }) =>
+                                    isActive ? "nav-link active" : "nav-link"
+                                  }
+                                  onClick={closeMenu}
+                                  role="menuitem"
+                                >
+                                  {link.text}
+                                </NavLink>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  )}
                   <li className="mobile-account">
                     <User closeMobileMenu={closeMenu} profileOpen={profileOpen} setProfileOpen={setProfileOpen} toggleProfileOnly={toggleProfileOnly} isMobile={isMobileView} />
                   </li>
