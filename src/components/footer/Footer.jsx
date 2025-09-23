@@ -6,6 +6,8 @@ import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md"
 import logo from "../../assets/images/logo.png"
 import "./footer.css"
 import { useNavigate, Link } from 'react-router-dom';
+import { FaXTwitter } from "react-icons/fa6";
+
 
 function QuickLinks() {
   const navigate = useNavigate();
@@ -45,8 +47,8 @@ export const Footer = () => {
               <a href="https://www.instagram.com/agarwal.vidu?igsh=MWI4d3Jvb2locmVvcQ==" className="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                 <RiInstagramFill />
               </a>
-              <a href="https://x.com/Vidushit143?t=QhDahpmDpE9ZuLXw0MujSA&s=08" className="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-                <AiFillTwitterCircle />
+              <a href="https://x.com/Vidushit143?t=QhDahpmDpE9ZuLXw0MujSA&s=08" className="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                <FaXTwitter/>
               </a>
               <a href="https://www.linkedin.com/in/vidushi-agarwal-8958-developer?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
 " className="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
