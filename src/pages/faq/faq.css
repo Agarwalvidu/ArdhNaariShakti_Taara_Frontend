@@ -1,0 +1,112 @@
+.faq-container {
+  max-width: 800px;
+  margin: 3em auto 2em auto;
+  background: linear-gradient(120deg, #fff0fa 0%, #fbeff5 100%);
+  padding: 2.5em 2em 2em 2em;
+  border-radius: 24px;
+  box-shadow: 0 8px 36px #b14e7c33, 0 2px 8px #0001;
+  animation: fadeIn 0.8s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.faq-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #b14e7c;
+  font-size: 2.5em;
+  font-weight: 800;
+  margin-bottom: 1.2em;
+  text-align: center;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px #b14e7c11;
+}
+.faq-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.faq-item {
+  margin-bottom: 2em;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 2px 12px #b14e7c11;
+  transition: box-shadow 0.2s, background 0.2s;
+  overflow: hidden;
+  border: 1.5px solid #f2d6e3;
+}
+.faq-item.open {
+  background: #fbeff5;
+  box-shadow: 0 6px 24px #b14e7c22;
+  border-color: #b14e7c44;
+}
+.faq-question {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #7a2e53;
+  padding: 1.2em 1.5em 1.2em 2.5em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.faq-question .arrow {
+  margin-left: auto;
+  font-size: 1.3em;
+  transition: transform 0.3s;
+  color: #b14e7c;
+}
+.faq-item.open .faq-question .arrow {
+  transform: rotate(90deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: #fff;
+  color: #444;
+  font-size: 1.12em;
+  line-height: 1.8;
+  margin: 0 1.5em 0 2.5em;
+  padding: 0 0 0 0;
+  border-left: 3px solid #f2d6e3;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+}
+.faq-item.open .faq-answer {
+  max-height: 400px;
+  padding: 1.2em 0 1.5em 1.2em;
+  margin-bottom: 1em;
+  background: #fff0fa;
+  border-left: 3px solid #b14e7c;
+}
+.faq-answer a {
+  color: #b14e7c;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.faq-answer a:hover {
+  color: #7a2e53;
+}
+@media (max-width: 600px) {
+  .faq-container {
+    padding: 1.2em 0.5em;
+    border-radius: 12px;
+  }
+  .faq-title {
+    font-size: 1.5em;
+  }
+  .faq-question {
+    font-size: 1em;
+    padding: 1em 1em 1em 2em;
+  }
+  .faq-answer {
+    font-size: 1em;
+    margin: 0 1em 0 2em;
+  }
+}

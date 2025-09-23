@@ -81,6 +81,7 @@ export const Header = () => {
     setMenuOpen(false); // Ensure main menu is closed when opening profile drawer
   };
 
+
   return (
     <header className="header">
       <div className="scontainer flex space-between">
