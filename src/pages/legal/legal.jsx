@@ -8,15 +8,22 @@ export const Legal = () => {
     <div className="legal-page">
       {/* Header Section */}
       <div className="legal-header">
-        <h1 >Know Your Legal Rights</h1>
-        <h3><b>Knowing your legal rights empowers you to live with dignity, walk with confidence, and embrace life without fear.</b></h3>
-        <br></br>
-        <p>
-          Legal awareness is not just about laws—it's about empowerment, protection, and freedom. 
-          For the transgender community, understanding your rights can be the difference between silence and strength, 
-          between discrimination and justice. This section will guide you through the legal protections available, 
-          landmark judgments, and steps you can take if your rights are violated.
-        </p>
+         <h1 className="legal-title">Know Your Rights, Own Your Voice</h1>
+        {/* <p className="legal-kicker">
+          Understanding the law lets you live with dignity, walk with confidence, and choose without fear.
+        </p> */}
+        <div className="legal-intro-wrapper">
+    <p className="legal-intro">
+      Legal awareness isn’t just about sections and clauses—it’s about safety, respect, and freedom.
+      For the transgender community, knowing your rights can turn silence into strength and
+      discrimination into justice.
+    </p>
+
+    <p className="legal-intro legal-intro--muted">
+      This space highlights key protections, landmark judgments, and clear next steps to take if your
+      rights are ever violated—so you can navigate life and systems with clarity.
+    </p>
+  </div>
       </div>
 
       <Accordion title="1. Prohibition Against Discrimination"> 

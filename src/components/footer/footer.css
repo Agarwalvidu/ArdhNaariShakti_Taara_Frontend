@@ -114,6 +114,7 @@
 }
 
 /* Footer Links */
+
 .footer-links {
   list-style: none;
   padding: 0;
@@ -152,6 +153,10 @@
 .footer-links a:hover::before {
   width: 100%;
 }
+.footer-section .info .item:hover {
+  transform: none !important;
+}
+
 
 /* /*Contact Info  */
  /* .contact-info {
