@@ -11,6 +11,7 @@
 }
 .login-hero-text {
   position: absolute;
+  position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
@@ -186,6 +187,21 @@ input::-ms-reveal,
 input::-ms-clear {
   display: none;
 }
+.forgot-password-link {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.forgot-password-link a {
+  color: #1984f7;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.forgot-password-link a:hover {
+  text-decoration: underline;
+}
+
 
 @media screen and (max-width: 768px) {
   .login-hero {

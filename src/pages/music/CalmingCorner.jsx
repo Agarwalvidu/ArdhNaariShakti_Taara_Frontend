@@ -113,7 +113,8 @@ const CalmingCorner = () => {
           src={`https://player.cloudinary.com/embed/?cloud_name=duqownjat&public_id=${track.embed}&profile=cld-default`}
         ></iframe>
       ) : null}
-    </div>
+      </div>
+  
   );
 })}
 

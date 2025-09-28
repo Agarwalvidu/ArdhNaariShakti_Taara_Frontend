@@ -91,9 +91,7 @@ export const Login = () => {
               </div>
             </div>
 
-            <p className="forgot-password-link">
-              <Link to="/forgot-password">Forgot Password?</Link>
-            </p>
+            
 
             {error && <p className="error-message">{error}</p>}
 
@@ -103,6 +101,9 @@ export const Login = () => {
 
             <p className="register-link">
               Don’t have an account? <Link to="/register">Register</Link>
+            </p>
+            <p className="forgot-password-link">
+              <Link to="/forgot-password">Forgot Password?</Link>
             </p>
           </form>
         </div>
