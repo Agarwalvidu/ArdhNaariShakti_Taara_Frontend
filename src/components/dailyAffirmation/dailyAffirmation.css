@@ -1,0 +1,65 @@
+.affirmation-widget {
+  max-width: 400px;
+  min-height: 220px; /* Fixed minimum height so background stays consistent */
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+
+  /* Fixed gradient background */
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  background-size: cover;   /* Ensures gradient fills fully */
+  background-repeat: no-repeat;
+
+  /* Clean shadow + border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.affirmation-widget h2 {
+  font-size: 1.5rem;
+  color: #212529;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+blockquote {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 20px 0;
+  font-style: italic;
+}
+
+blockquote footer {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+.complete-goal-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+
+  background: #ff758c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.complete-goal-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.goal-tracker {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #212529;
+}

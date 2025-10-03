@@ -6,6 +6,7 @@ import { ButterflyPage } from "../../components/butterfly/butterfly.jsx"
 import { FlipCard } from "../../components/donation/Donation.jsx"
 import axios from "axios"
 import { useLocation } from "react-router-dom"
+import DailyAffirmation from "../../components/dailyAffirmation/DailyAffirmation.jsx"
 
 export const Home = () => {
   // const [posts, setPosts] = useState([])
@@ -25,6 +26,7 @@ export const Home = () => {
   return (
     <>
       <Category />
+      <DailyAffirmation />
       <About/>
       <ButterflyPage/>
       <FlipCard/>
