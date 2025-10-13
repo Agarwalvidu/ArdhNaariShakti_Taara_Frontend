@@ -172,3 +172,63 @@
     gap: 0.5rem;
   }
 }
+
+.section h2, 
+.section p {
+  text-align: center;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.section h2:hover {
+  transform: scale(1.03);
+  color: #2563eb;
+}
+
+.section {
+  background: linear-gradient(145deg, rgba(255,255,255,0.6), rgba(240,249,255,0.8));
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.privacy-page {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section{
+  background-color:#FFFFFF66 !important;
+}
+
+.section:not(:last-child) {
+  position: relative;
+}
+
+.section:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  opacity: 0.4;
+}
+
+#contact-link{
+  text-decoration: none;
+}
