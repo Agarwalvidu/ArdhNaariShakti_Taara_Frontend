@@ -18,9 +18,59 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
   const profileRef = useRef(null);
 
   const [localProfileOpen, setLocalProfileOpen] = useState(false);
+  const [profilePicture, setProfilePicture] = useState("");
 
   const currentProfileOpen = isMobile ? propProfileOpen : localProfileOpen;
   const currentSetProfileOpen = isMobile ? propSetProfileOpen : setLocalProfileOpen;
+
+  
+  const getProfilePicture = () => {
+    if (!user) return "https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png";
+    
+ 
+    if (user.profilePic) {
+      return user.profilePic;
+    }
+    
+    const storedPic = localStorage.getItem(`profilePic_${user.email}`);
+    if (storedPic) {
+      return storedPic;
+    }
+    
+
+    return "https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png";
+  };
+
+
+  useEffect(() => {
+    if (user) {
+      setProfilePicture(getProfilePicture());
+    }
+  }, [user]);
+
+
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key && e.key.startsWith('profilePic_') && user) {
+        setProfilePicture(getProfilePicture());
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, [user]);
+
+
+  useEffect(() => {
+    const handleProfileUpdate = () => {
+      if (user) {
+        setProfilePicture(getProfilePicture());
+      }
+    };
+
+    window.addEventListener('profilePictureUpdated', handleProfileUpdate);
+    return () => window.removeEventListener('profilePictureUpdated', handleProfileUpdate);
+  }, [user]);
 
   useClickOutside(profileRef, () => {
     if (isMobile) {
@@ -44,8 +94,6 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
     navigate('/');
   };
 
-  const PublicFlo = "https://taara-backend.onrender.com/images/";
-
   return (
     <div className="profile" ref={profileRef}>
       {user ? (
@@ -62,8 +110,14 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
               }}
             >
               <img
-                src="https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png"
-                alt=""
+                src={profilePicture}
+                alt="Profile"
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover',
+                  borderRadius: '50%'
+                }}
               />
             </button>
           )}
@@ -73,8 +127,14 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
                 <div className="image">
                   <div className="img">
                     <img
-                      src="https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png"
-                      alt=""
+                      src={profilePicture}
+                      alt="Profile"
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        borderRadius: '50%'
+                      }}
                     />
                   </div>
                   <div className="text">
@@ -110,8 +170,14 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
                 <div className="image">
                   <div className="img">
                     <img
-                      src="https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png"
-                      alt=""
+                      src={profilePicture}
+                      alt="Profile"
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        borderRadius: '50%'
+                      }}
                     />
                   </div>
                   <div className="text">
