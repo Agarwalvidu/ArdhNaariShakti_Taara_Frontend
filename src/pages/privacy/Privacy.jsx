@@ -25,9 +25,9 @@ export const Privacy = () => {
           <h2><span className="number">2</span> How We Use Your Information</h2>
           <p>The data we collect is used to:</p>
           <ul>
-            <li>Improve your experience on the platform</li>
-            <li>Provide support and respond to your queries</li>
-            <li>Send important updates or notifications</li>
+            <p>Improve your experience on the platform</p>
+            <p>Provide support and respond to your queries</p>
+            <p>Send important updates or notifications</p>
           </ul>
         </div>
 
@@ -51,10 +51,10 @@ export const Privacy = () => {
           <p>We may update our privacy practices. Changes will be posted on this page with a revised date.</p>
         </div>
 
-        <div className="contact-section">
+        <div className="section contact-section">
           <h2><span className="number">7</span> Contact Us</h2>
           <p>
-            If you have any questions or concerns about this policy, please contact us through the <a href="/contact">Contact Page</a>.
+            If you have any questions or concerns about this policy, please contact us through the <a id="contact-link" href="/contact">Contact Page</a>.
           </p>
         </div>
       </div>
