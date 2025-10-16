@@ -101,18 +101,19 @@ header {
   background-color: #eec7d6;
 }
 
-/* Navbar Avatar */
+/* Navbar Avatar - FIXED SIZE */
 .account {
   position: relative; 
 }
 
 .account img,
 .mobile-account img {
-  width: 40px;
-  height: 40px;
+  width: 45px !important;
+  height: 45px !important;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+  display: block;
 }
 
 
@@ -148,9 +149,32 @@ header {
   flex: 0 0 auto; 
 }
 
+/* Profile Button Image - FIXED SIZE */
+.profile .img {
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile .img img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  display: block;
+}
+
 .profile img {
-  width: 36px;
-  height: 36px;
+  width: 45px !important;
+  height: 45px !important;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -159,7 +183,7 @@ header {
 
 .openProfile {
   position: absolute;
-  top: 48px;          
+  top: 55px;          
   right: 0;
   background: #fff;
   min-width: 200px;
@@ -178,6 +202,10 @@ header {
   gap: 12px;
   padding: 10px 14px;
   cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
 }
 
 .openProfile .box + .box {
@@ -296,51 +324,42 @@ header.active {
     padding: 16px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     color: #fff !important;
-    }
+  }
+
+  /* Mobile profile image size */
+  .profile .img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .profile .img img {
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 
 .profile {
   position: relative; 
   display: inline-block;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-
-}
-
-.profile .img img {
-  width: 40px;
-  height: 40px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
 }
 
 
 .openProfile {
   position: absolute;
-  top: 48px;          
+  top: 55px;          
   right: 0;          
   left: auto;        
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  min-width: 100px;
+  min-width: 220px;
   padding: 10px 0;
   z-index: 9990;
 }
 
-
-.openProfile .box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 12px 25px;
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-}
 
 .openProfile .image {
   display: flex;
@@ -349,11 +368,20 @@ header.active {
   padding: 10px 15px;
 }
 
+.openProfile .image .img {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
 .openProfile .image .img img {
-  width: 40px;   
-  height: 40px;
+  width: 100% !important;
+  height: 100% !important;
   border-radius: 50%;
   object-fit: cover;
+  display: block;
 }
 
 .openProfile .image .text {
@@ -372,8 +400,17 @@ header.active {
   font-size: 13px;
   color: #555;
 }
-.openProfile .box:hover {
-  background: #f9f9f9;
+
+.openProfile .box .icon {
+  font-size: 18px;
+  color: #555;
+}
+
+.openProfile .box h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
 }
 
 .toast-container-lower-zindex {
@@ -460,4 +497,3 @@ header.active {
   color: #000;
   z-index: 10;
 }
-
