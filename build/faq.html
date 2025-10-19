@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ | Ardh Naari Shakti : A warm Hug</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(120deg, #fbeff5 0%, #f7f7fa 100%);
+      color: #222;
+      min-height: 100vh;
+    }
+    .main-nav {
+      padding: 1em 0;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.05em;
+      letter-spacing: 0.01em;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .main-nav a {
+      color: #b14e7c;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.3em 0.7em;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .main-nav a.active,
+    .main-nav a:hover {
+      background: #fbeff5;
+      color: #7a2e53;
+    }
+    .faq-container {
+      max-width: 750px;
+      margin: 3em auto 2em auto;
+      background: #fff;
+      padding: 2.5em 2em 2em 2em;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px #b14e7c22, 0 1.5px 6px #0001;
+      animation: fadeIn 0.8s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .faq-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #b14e7c;
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-bottom: 0.7em;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+    .faq-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .faq-item {
+      margin-bottom: 1.5em;
+      border-radius: 12px;
+      background: #fbeff5;
+      box-shadow: 0 2px 8px #b14e7c11;
+      transition: box-shadow 0.2s, background 0.2s;
+      overflow: hidden;
+      border: 1px solid #f2d6e3;
+    }
+    .faq-item.open {
+      background: #fff0fa;
+      box-shadow: 0 4px 16px #b14e7c22;
+      border-color: #b14e7c44;
+    }
+    .faq-question {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.15em;
+      font-weight: 600;
+      color: #7a2e53;
+      padding: 1.1em 1.5em 1.1em 2.2em;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .faq-question::before {
+      content: "";
+      display: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      background: linear-gradient(135deg, #b14e7c 60%, #fbeff5 100%);
+      border-radius: 50%;
+      margin-right: 0.7em;
+      text-align: center;
+      line-height: 1.5em;
+      color: #fff;
+      font-size: 1.1em;
+      position: absolute;
+      left: 0.5em;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .faq-question .arrow {
+      margin-left: auto;
+      font-size: 1.2em;
+      transition: transform 0.3s;
+      color: #b14e7c;
+    }
+    .faq-item.open .faq-question .arrow {
+      transform: rotate(90deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      background: #fff;
+      color: #444;
+      font-size: 1.05em;
+      line-height: 1.7;
+      margin: 0 1.5em 0 2.5em;
+      padding: 0 0 0 0;
+      border-left: 3px solid #f2d6e3;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 1em 0 1.2em 1em;
+      margin-bottom: 1em;
+    }
+    .faq-answer a {
+      color: #b14e7c;
+      text-decoration: underline;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .faq-answer a:hover {
+      color: #7a2e53;
+    }
+    @media (max-width: 600px) {
+      .faq-container {
+        padding: 1.2em 0.5em;
+        border-radius: 10px;
+      }
+      .faq-title {
+        font-size: 1.4em;
+      }
+      .main-nav {
+        font-size: 0.98em;
+        gap: 0.7em;
+        flex-wrap: wrap;
+      }
+      .faq-question {
+        font-size: 1em;
+        padding: 1em 1em 1em 2em;
+      }
+      .faq-answer {
+        font-size: 0.98em;
+        margin: 0 1em 0 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="taarabot.html">Taarabot</a>
+    <a href="blog.html">Blog</a>
+    <a href="shelter.html">Shelter</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="legal.html">Legal</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="calming-corner.html">Calming Corner</a>
+    <a href="faq.html" class="active">FAQ</a>
+  </nav>
+  <div class="faq-container">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-question">What is Taara, and how does it empower women?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          Taara is a platform dedicated to supporting and empowering women by providing access to resources, community support, and essential services. Our mission is to create a safe and inclusive space where women can find help, guidance, and opportunities for personal and professional growth.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">How can I access shelter or community support services?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          You can visit our <a href="shelter.html">Shelter</a> page to find information about available shelters and community support services. If you need urgent help, please use the contact options provided or reach out to our support team.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">Are there job opportunities listed on the Taara platform?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          Yes, we regularly update our <a href="jobs.html">Jobs</a> page with new opportunities. You can browse and apply for jobs that match your skills and interests.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">How can I get legal advice or assistance through Taara?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          Visit our <a href="legal.html">Legal</a> page to access legal resources, advice, and connect with professionals who can assist you with your concerns.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">How do I contact the Taara team for urgent help?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          For urgent assistance, please use the contact form on our <a href="contact.html">Contact</a> page or email us directly at <a href="mailto:support@taara.org">support@taara.org</a>. We are here to help you 24/7.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">Is my information safe and confidential on Taara?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          Absolutely. We prioritize your privacy and ensure that all personal information shared on Taara is kept secure and confidential in accordance with our <a href="privacy.html">Privacy Policy</a>.
+        </div>
+      </li>
+    </ul>
+  </div>
+  <footer style="background: #fbeff5; color: #7a2e53; text-align: center; padding: 2em 1em 1.5em 1em; font-family: 'Montserrat', Arial, sans-serif; font-size: 1.05em; border-top: 1px solid #f2d6e3; margin-top: 3em; border-radius: 0 0 18px 18px; box-shadow: 0 -2px 8px #b14e7c11;">
+    <div style="max-width: 700px; margin: 0 auto;">
+      <strong>Ardh Naari Shakti : A warm Hug</strong> &copy; 2024 &mdash; Empowering Women, Building Communities.<br>
+      <span style="font-size:0.97em;">Need help? <a href="contact.html" style="color:#b14e7c; text-decoration:underline;">Contact Us</a> | <a href="privacy.html" style="color:#b14e7c; text-decoration:underline;">Privacy Policy</a></span>
+      <div style="margin-top:1em; font-size:0.93em; color:#b14e7c;">Made with <span style="color:#e25555;">&#10084;</span> for every woman</div>
+    </div>
+  </footer>
+  <script>
+    // FAQ Accordion Functionality
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+      q.addEventListener('click', function() {
+        var item = this.parentElement;
+        var open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i) {
+          i.classList.remove('open');
+        });
+        if (!open) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ | Ardh Naari Shakti : A warm Hug</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(120deg, #fbeff5 0%, #f7f7fa 100%);
+      color: #222;
+      min-height: 100vh;
+    }
+    .main-nav {
+      padding: 1em 0;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.05em;
+      letter-spacing: 0.01em;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .main-nav a {
+      color: #b14e7c;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.3em 0.7em;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .main-nav a.active,
+    .main-nav a:hover {
+      background: #fbeff5;
+      color: #7a2e53;
+    }
+    .faq-container {
+      max-width: 750px;
+      margin: 3em auto 2em auto;
+      background: #fff;
+      padding: 2.5em 2em 2em 2em;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px #b14e7c22, 0 1.5px 6px #0001;
+      animation: fadeIn 0.8s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .faq-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #b14e7c;
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-bottom: 0.7em;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+    .faq-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .faq-item {
+      margin-bottom: 1.5em;
+      border-radius: 12px;
+      background: #fbeff5;
+      box-shadow: 0 2px 8px #b14e7c11;
+      transition: box-shadow 0.2s, background 0.2s;
+      overflow: hidden;
+      border: 1px solid #f2d6e3;
+    }
+    .faq-item.open {
+      background: #fff0fa;
+      box-shadow: 0 4px 16px #b14e7c22;
+      border-color: #b14e7c44;
+    }
+    .faq-question {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.15em;
+      font-weight: 600;
+      color: #7a2e53;
+      padding: 1.1em 1.5em 1.1em 2.2em;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .faq-question::before {
+      content: "";
+      display: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      background: linear-gradient(135deg, #b14e7c 60%, #fbeff5 100%);
+      border-radius: 50%;
+      margin-right: 0.7em;
+      text-align: center;
+      line-height: 1.5em;
+      color: #fff;
+      font-size: 1.1em;
+      position: absolute;
+      left: 0.5em;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .faq-question .arrow {
+      margin-left: auto;
+      font-size: 1.2em;
+      transition: transform 0.3s;
+      color: #b14e7c;
+    }
+    .faq-item.open .faq-question .arrow {
+      transform: rotate(90deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      background: #fff;
+      color: #444;
+      font-size: 1.05em;
+      line-height: 1.7;
+      margin: 0 1.5em 0 2.5em;
+      padding: 0 0 0 0;
+      border-left: 3px solid #f2d6e3;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 1em 0 1.2em 1em;
+      margin-bottom: 1em;
+    }
+    .faq-answer a {
+      color: #b14e7c;
+      text-decoration: underline;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .faq-answer a:hover {
+      color: #7a2e53;
+    }
+    @media (max-width: 600px) {
+      .faq-container {
+        padding: 1.2em 0.5em;
+        border-radius: 10px;
+      }
+      .faq-title {
+        font-size: 1.4em;
+      }
+      .main-nav {
+        font-size: 0.98em;
+        gap: 0.7em;
+        flex-wrap: wrap;
+      }
+      .faq-question {
+        font-size: 1em;
+        padding: 1em 1em 1em 2em;
+      }
+      .faq-answer {
+        font-size: 0.98em;
+        margin: 0 1em 0 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="taarabot.html">Taarabot</a>
+    <a href="blog.html">Blog</a>
+    <a href="shelter.html">Shelter</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="legal.html">Legal</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="calming-corner.html">Calming Corner</a>
+    <a href="faq.html" class="active">FAQ</a>
+  </nav>
+  <div class="faq-container">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-question">What is Taara, and how does it empower women?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          Taara is a platform dedicated to supporting and empowering women by providing access to resources, community support, and essential services. Our mission is to create a safe and inclusive space where women can find help, guidance, and opportunities for personal and professional growth.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">How can I access shelter or community support services?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          You can visit our <a href="shelter.html">Shelter</a> page to find information about available shelters and community support services. If you need urgent help, please use the contact options provided or reach out to our support team.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">Are there job opportunities listed on the Taara platform?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          Yes, we regularly update our <a href="jobs.html">Jobs</a> page with new opportunities. You can browse and apply for jobs that match your skills and interests.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">How can I get legal advice or assistance through Taara?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          Visit our <a href="legal.html">Legal</a> page to access legal resources, advice, and connect with professionals who can assist you with your concerns.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">How do I contact the Taara team for urgent help?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          For urgent assistance, please use the contact form on our <a href="contact.html">Contact</a> page or email us directly at <a href="mailto:support@taara.org">support@taara.org</a>. We are here to help you 24/7.
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-question">Is my information safe and confidential on Taara?<span class="arrow">&#9654;</span></div>
+        <div class="faq-answer">
+          Absolutely. We prioritize your privacy and ensure that all personal information shared on Taara is kept secure and confidential in accordance with our <a href="privacy.html">Privacy Policy</a>.
+        </div>
+      </li>
+    </ul>
+  </div>
+  <footer style="background: #fbeff5; color: #7a2e53; text-align: center; padding: 2em 1em 1.5em 1em; font-family: 'Montserrat', Arial, sans-serif; font-size: 1.05em; border-top: 1px solid #f2d6e3; margin-top: 3em; border-radius: 0 0 18px 18px; box-shadow: 0 -2px 8px #b14e7c11;">
+    <div style="max-width: 700px; margin: 0 auto;">
+      <strong>Ardh Naari Shakti : A warm Hug</strong> &copy; 2024 &mdash; Empowering Women, Building Communities.<br>
+      <span style="font-size:0.97em;">Need help? <a href="contact.html" style="color:#b14e7c; text-decoration:underline;">Contact Us</a> | <a href="privacy.html" style="color:#b14e7c; text-decoration:underline;">Privacy Policy</a></span>
+      <div style="margin-top:1em; font-size:0.93em; color:#b14e7c;">Made with <span style="color:#e25555;">&#10084;</span> for every woman</div>
+    </div>
+  </footer>
+  <script>
+    // FAQ Accordion Functionality
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+      q.addEventListener('click', function() {
+        var item = this.parentElement;
+        var open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i) {
+          i.classList.remove('open');
+        });
+        if (!open) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
