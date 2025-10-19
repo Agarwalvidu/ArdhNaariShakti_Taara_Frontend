@@ -108,8 +108,8 @@ header {
 
 .account img,
 .mobile-account img {
-  width: 45px !important;
-  height: 45px !important;
+  /* width: 45px !important;
+  height: 45px !important; */
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
@@ -173,8 +173,6 @@ header {
 }
 
 .profile img {
-  width: 45px !important;
-  height: 45px !important;
   border-radius: 50%;
   object-fit: cover;
   display: block;

@@ -11,6 +11,7 @@ import { FaTimes } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useClickOutside } from '../../hooks/useClickOutside';
+import "./User.css";
 
 export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfileOpen: propSetProfileOpen, toggleProfileOnly, showProfileOnly, isMobile }) => {
   const { user, dispatch } = useContext(Context);
@@ -23,24 +24,17 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
   const currentProfileOpen = isMobile ? propProfileOpen : localProfileOpen;
   const currentSetProfileOpen = isMobile ? propSetProfileOpen : setLocalProfileOpen;
 
-  
   const getProfilePicture = () => {
     if (!user) return "https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png";
-    
- 
     if (user.profilePic) {
       return user.profilePic;
     }
-    
     const storedPic = localStorage.getItem(`profilePic_${user.email}`);
     if (storedPic) {
       return storedPic;
     }
-    
-
     return "https://www.blookup.com/static/images/single/profile-1.edaddfbacb02.png";
   };
-
 
   useEffect(() => {
     if (user) {
@@ -48,18 +42,15 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
     }
   }, [user]);
 
-
   useEffect(() => {
     const handleStorageChange = (e) => {
       if (e.key && e.key.startsWith('profilePic_') && user) {
         setProfilePicture(getProfilePicture());
       }
     };
-
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [user]);
-
 
   useEffect(() => {
     const handleProfileUpdate = () => {
@@ -67,7 +58,6 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
         setProfilePicture(getProfilePicture());
       }
     };
-
     window.addEventListener('profilePictureUpdated', handleProfileUpdate);
     return () => window.removeEventListener('profilePictureUpdated', handleProfileUpdate);
   }, [user]);
@@ -100,7 +90,7 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
         <>
           {!showProfileOnly && (
             <button
-              className="img"
+              className="profile-avatar-btn"
               onClick={() => {
                 if (isMobile) {
                   toggleProfileOnly();
@@ -111,95 +101,83 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
             >
               <img
                 src={profilePicture}
+                style={{ width: "45px", height: "45px" }}
                 alt="Profile"
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  objectFit: 'cover',
-                  borderRadius: '50%'
-                }}
+                className="profile-avatar-img"
               />
             </button>
           )}
           {currentProfileOpen && !isMobile && (
-            <div className="openProfile boxItems" onClick={e => e.stopPropagation()}>
-              <Link to={"/account"} onClick={() => currentSetProfileOpen(false)}>
-                <div className="image">
-                  <div className="img">
-                    <img
-                      src={profilePicture}
-                      alt="Profile"
-                      style={{ 
-                        width: '100%', 
-                        height: '100%', 
-                        objectFit: 'cover',
-                        borderRadius: '50%'
-                      }}
-                    />
-                  </div>
-                  <div className="text">
-                    <h4>{user.username}</h4>
-                    <label>India, Delhi</label>
-                  </div>
+            <div className="profile-menu boxItems" onClick={e => e.stopPropagation()}>
+              <Link to={"/account"} onClick={() => currentSetProfileOpen(false)} className="profile-header">
+                <div className="profile-avatar-wrapper">
+                  <img
+                    src={profilePicture}
+                    alt="Profile"
+                    className="profile-avatar-large"
+                  />
+                </div>
+                <div className="profile-info">
+                  <h4 className="profile-name">{user.username}</h4>
+                  <label className="profile-location">India, Delhi</label>
                 </div>
               </Link>
-              <button className="box" onClick={() => {navigate("/create"); currentSetProfileOpen(false);}}>
-                <RiImageAddLine className="icon" />
+              
+              <div className="profile-divider"></div>
+              
+              <button className="profile-menu-item" onClick={() => {navigate("/create"); currentSetProfileOpen(false);}}>
+                <RiImageAddLine className="menu-icon" />
                 <h4>Create Post</h4>
               </button>
-              <button className="box" onClick={() => {navigate("/account"); currentSetProfileOpen(false);}}>
-                <IoSettingsOutline className="icon" />
+              <button className="profile-menu-item" onClick={() => {navigate("/account"); currentSetProfileOpen(false);}}>
+                <IoSettingsOutline className="menu-icon" />
                 <h4>My Account</h4>
               </button>
-              <button className="box" onClick={() => {navigate("/help"); currentSetProfileOpen(false);}}>
-                <GrHelp className="icon" />
+              <button className="profile-menu-item" onClick={() => {navigate("/help"); currentSetProfileOpen(false);}}>
+                <GrHelp className="menu-icon" />
                 <h4>Help</h4>
               </button>
-              <button className="box" onClick={() => {handleLogout(); currentSetProfileOpen(false);}}>
-                <BiLogOut className="icon" />
+              <button className="profile-menu-item logout-item" onClick={() => {handleLogout(); currentSetProfileOpen(false);}}>
+                <BiLogOut className="menu-icon" />
                 <h4>Log Out</h4>
               </button>
             </div>
           )}
           {showProfileOnly && isMobile && (
-            <div className="openProfile boxItems" onClick={e => e.stopPropagation()}>
-              <button className="closeProfileMenu" onClick={toggleProfileOnly}>
+            <div className="profile-menu boxItems mobile-profile" onClick={e => e.stopPropagation()}>
+              <button className="close-profile-btn" onClick={toggleProfileOnly}>
                 <FaTimes />
               </button>
-              <Link to={"/account"} onClick={closeMobileMenu}>
-                <div className="image">
-                  <div className="img">
-                    <img
-                      src={profilePicture}
-                      alt="Profile"
-                      style={{ 
-                        width: '100%', 
-                        height: '100%', 
-                        objectFit: 'cover',
-                        borderRadius: '50%'
-                      }}
-                    />
-                  </div>
-                  <div className="text">
-                    <h4>{user.username}</h4>
-                    <label>India, Delhi</label>
-                  </div>
+              <Link to={"/account"} onClick={closeMobileMenu} className="profile-header">
+                <div className="profile-avatar-wrapper">
+                  <img
+                    src={profilePicture}
+                    alt="Profile"
+                    className="profile-avatar-large"
+                  />
+                </div>
+                <div className="profile-info">
+                  <h4 className="profile-name">{user.username}</h4>
+                  <label className="profile-location">India, Delhi</label>
                 </div>
               </Link>
-              <button className="box" onClick={() => {navigate("/create"); closeMobileMenu();}}>
-                <RiImageAddLine className="icon" />
+              
+              <div className="profile-divider"></div>
+              
+              <button className="profile-menu-item" onClick={() => {navigate("/create"); closeMobileMenu();}}>
+                <RiImageAddLine className="menu-icon" />
                 <h4>Create Post</h4>
               </button>
-              <button className="box" onClick={() => {navigate("/account"); closeMobileMenu();}}>
-                <IoSettingsOutline className="icon" />
+              <button className="profile-menu-item" onClick={() => {navigate("/account"); closeMobileMenu();}}>
+                <IoSettingsOutline className="menu-icon" />
                 <h4>My Account</h4>
               </button>
-              <button className="box" onClick={() => {navigate("/help"); closeMobileMenu();}}>
-                <GrHelp className="icon" />
+              <button className="profile-menu-item" onClick={() => {navigate("/help"); closeMobileMenu();}}>
+                <GrHelp className="menu-icon" />
                 <h4>Help</h4>
               </button>
-              <button className="box" onClick={handleLogout}>
-                <BiLogOut className="icon" />
+              <button className="profile-menu-item logout-item" onClick={handleLogout}>
+                <BiLogOut className="menu-icon" />
                 <h4>Log Out</h4>
               </button>
             </div>
@@ -207,7 +185,7 @@ export const User = ({ closeMobileMenu, profileOpen: propProfileOpen, setProfile
         </>
       ) : (
         <Link to="/login" onClick={closeMobileMenu}>
-          <button>My Account</button>
+          <button className="login-btn">My Account</button>
         </Link>
       )}
     </div>
